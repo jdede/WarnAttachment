@@ -30,7 +30,7 @@ Block Message Extensions
 
 The following extensions are blocked completely. The user is not able to open
 these files (besides deactivating the plugin). The source of these file types
-is from [google mail](https://support.google.com/mail/answer/6590):
+is [this google mail support page](https://support.google.com/mail/answer/6590):
 
 * ADE
 * ADP
