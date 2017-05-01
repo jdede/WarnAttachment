@@ -67,6 +67,28 @@ is from google mail: https://support.google.com/mail/answer/6590
 
 The user can not open that file extension.
 
+Development
+===========
+
+To test the extension without installing the xpi file, you can either copy the
+complete directory into you `extensions` directory, i.e., the
+`warnattachment@jdede.de`. Alternatively, you can create a text file named
+`warnattachment@jdede.de` into your extension directory. In that file, you
+should provide the absolute path to the git repository like for example
+`/home/user/src/github/warnAttachment/warnattachment@jdede.de/`.
+
+Further information can be found [on the mozilla developer webpage](https://developer.mozilla.org/en-US/Add-ons/Thunderbird/Building_a_Thunderbird_extension_7:_Installation)
+
+Binaries
+========
+
+For convenience, the binaries are provided in the [bin](bin) directory.
+
+Changelog
+=========
+
+For changes, check the [CHANGELOG.md](CHANGELOG.md) file in the current directory
+
 TODO
 ====
 
