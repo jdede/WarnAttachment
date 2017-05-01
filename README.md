@@ -3,15 +3,16 @@ WarnAttachment
 
 This Thunderbird extension warnst against potential malicious attachments like
 docx and xlsx files. A set of highly risky attachments are blocked (cmd, exe
-etc.)
+etc.). See corresponding section in this document for an overview of file
+extensions.
 
 There is a lot of space for improvement. Feel free to contribute and send pull
 requests.
 
-Warning
--------
+Warning Message Extensions
+--------------------------
 
-A warning message is shown for the following extensions:
+A warning message is shown for the following file extensions:
 
 * DOC
 * DOCX
@@ -24,11 +25,12 @@ These files may contain macro viruses which are nowadays commonly used for
 encryption malware. The user is asked if s/he is really willing to open the
 file and if it is from a trustworthy source.
 
-Block
------
+Block Message Extensions
+------------------------
 
-The following extensions are blocked completely. The source of these file types
-is from google mail: https://support.google.com/mail/answer/6590
+The following extensions are blocked completely. The user is not able to open
+these files (besides deactivating the plugin). The source of these file types
+is from [google mail](https://support.google.com/mail/answer/6590):
 
 * ADE
 * ADP
@@ -65,7 +67,7 @@ is from google mail: https://support.google.com/mail/answer/6590
 * WSF
 * WSH
 
-The user can not open that file extension.
+**The user can not open attachments with these extensions.**
 
 Development
 ===========
