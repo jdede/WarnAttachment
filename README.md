@@ -72,6 +72,9 @@ is [this google mail support page](https://support.google.com/mail/answer/6590):
 Development
 ===========
 
+Testing
+-------
+
 To test the extension without installing the xpi file, you can either copy the
 complete directory into you `extensions` directory, i.e., the
 `warnattachment@jdede.de`. Alternatively, you can create a text file named
@@ -80,6 +83,12 @@ should provide the absolute path to the git repository like for example
 `/home/user/src/github/warnAttachment/warnattachment@jdede.de/`.
 
 Further information can be found [on the mozilla developer webpage](https://developer.mozilla.org/en-US/Add-ons/Thunderbird/Building_a_Thunderbird_extension_7:_Installation)
+
+Building
+--------
+
+To build the `.xpi` extension file, simply run `make` in the root directory of
+this repository.
 
 Binaries
 ========
@@ -97,7 +106,6 @@ TODO
 * The file extensions should be configurable not only via about:config
 * Nicer icon / logo
 * Migrate to WebExtensions
-* Remove  duplicate files and folders from build process (Makefile, content)
 
 License
 =======
