@@ -96,6 +96,8 @@ TODO
 
 * The file extensions should be configurable not only via about:config
 * Nicer icon / logo
+* Migrate to WebExtensions
+* Remove  duplicate files and folders from build process (Makefile, content)
 
 License
 =======
