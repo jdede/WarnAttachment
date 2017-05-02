@@ -1,0 +1,6 @@
+<!ENTITY options.warn.title "Dateiendungen (Warnung)">
+<!ENTITY options.warn.desc "Für diese Dateiendungen wird eine Warnmeldung ausgegeben. Die Werte werden durch Kommata separiert.">
+<!ENTITY options.blocked.title "Dateiendungen (Blockieren)">
+<!ENTITY options.blocked.desc "Diese Dateiendungen werden komplett blockiert. Die Werte werden durch Kommata separiert.">
+
+

@@ -1,0 +1,6 @@
+<!ENTITY options.warn.title "File extensions (warn)">
+<!ENTITY options.warn.desc "A warning dialog will be shown for these file extensions. This field contains comma-separated values.">
+<!ENTITY options.blocked.title "File extensions (block)">
+<!ENTITY options.blocked.desc "These file extensions will be blocked completely. This field contains comma-separated values.">
+
+

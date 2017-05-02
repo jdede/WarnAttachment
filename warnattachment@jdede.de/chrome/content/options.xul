@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE dialog SYSTEM "chrome://warnattachment/locale/warnattachment.dtd">
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+
+<vbox xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+    <setting type="string" pref="extensions.warnattachment.warn" title="&options.warn.title;" desc="&options.warn.desc;" />
+    <setting type="string" pref="extensions.warnattachment.blocked" title="&options.blocked.title;" desc="&options.blocked.desc;" />
+
+</vbox>

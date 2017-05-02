@@ -6,7 +6,7 @@ docx and xlsx files. A set of highly risky attachments are blocked (cmd, exe
 etc.). See corresponding section in this document for an overview of file
 extensions.
 
-There is a lot of space for improvement. Feel free to contribute and send pull
+There is a lot of space for improvements. Feel free to contribute and send pull
 requests.
 
 Warning Message Extensions
@@ -103,7 +103,7 @@ For changes, check the [CHANGELOG.md](CHANGELOG.md) file in the current director
 TODO
 ====
 
-* The file extensions should be configurable not only via about:config
+* The configuration dialog should be extended
 * Nicer icon / logo
 * Migrate to WebExtensions
 
