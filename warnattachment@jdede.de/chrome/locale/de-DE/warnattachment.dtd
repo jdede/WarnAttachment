@@ -3,4 +3,7 @@
 <!ENTITY options.blocked.title "Dateiendungen (Blockieren)">
 <!ENTITY options.blocked.desc "Diese Dateiendungen werden komplett blockiert. Die Werte werden durch Kommata separiert.">
 
-
+<!ENTITY options.warn.user.title "Benutzerdefinierte Meldung für Warnungen">
+<!ENTITY options.warn.user.desc "Leer lassen, um Standard zu verwenden.">
+<!ENTITY options.blocked.user.title "Benutzerdefinierte Meldung für blockierte Anhänge">
+<!ENTITY options.blocked.user.desc "Leer lassen, um Standard zu verwenden.">

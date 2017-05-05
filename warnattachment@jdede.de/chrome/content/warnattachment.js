@@ -31,7 +31,7 @@ if (
         var prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"]
                 .getService(Components.interfaces.nsIPromptService);
         var blockedExt = prefs.getCharPref("blocked").toLowerCase().replace(/\s+/g, '').split(",");
-        var warnExt = prefs. getCharPref("warn").toLowerCase().replace(/\s+/g, '').split(",");
+        var warnExt = prefs.getCharPref("warn").toLowerCase().replace(/\s+/g, '').split(",");
 
         // Get extension of current opened file
         var attName = attachment.displayName ? attachment.displayName : attachment.name;
@@ -42,7 +42,7 @@ if (
             if ("." + blockedExt[i].toLowerCase() == ext) {
                 prompts.alert(null,
                     stringsBundle.getString('blockTitle'),
-                    stringsBundle.getString('blockText')
+                    getBlocking()
                 );
                 // Do nothing
                 return;
@@ -54,7 +54,7 @@ if (
             if ("." + warnExt[i].toLowerCase() == ext){
                 var result = prompts.confirm(null,
                     stringsBundle.getString('warningTitle'),
-                    stringsBundle.getString('warningText')
+                    getWarning()
                 );
                 if(result){
                     // User agreed: Open normally
@@ -67,5 +67,44 @@ if (
         openAttachmentOriginal.apply(this, arguments);
     };
     AttachmentInfo.prototype.open = openAttachment;
+}
+
+/**
+ * Returns either the user default warning message or the default one.
+ */
+function getWarning() {
+    var prefs = Components.classes["@mozilla.org/preferences-service;1"]
+            .getService(Components.interfaces.nsIPrefService)
+            .getBranch("extensions.warnattachment.");
+
+    var stringsBundle = document.getElementById("warnAttachmentStringbundle");
+
+    var msg = prefs.getComplexValue("user_warning_msg",
+      Components.interfaces.nsISupportsString).data;
+
+    if (msg == "") {
+        return stringsBundle.getString("warningText");
+    }
+    return msg;
+}
+
+
+/**
+ * Returns either the user default blocking message or the default one.
+ */
+function getBlocking() {
+    var prefs = Components.classes["@mozilla.org/preferences-service;1"]
+            .getService(Components.interfaces.nsIPrefService)
+            .getBranch("extensions.warnattachment.");
+
+    var stringsBundle = document.getElementById("warnAttachmentStringbundle");
+
+    var msg = prefs.getComplexValue("user_blocked_msg",
+      Components.interfaces.nsISupportsString).data;
+
+    if (msg == "") {
+        return stringsBundle.getString("blockText");
+    }
+    return msg;
 }
 

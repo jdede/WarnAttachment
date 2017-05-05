@@ -20,6 +20,10 @@ A warning message is shown for the following file extensions:
 * PPTX
 * XLS
 * XLSX
+* PPS
+* PPSX
+* ZIP
+* RAR
 
 These files may contain macro viruses which are nowadays commonly used for
 encryption malware. The user is asked if s/he is really willing to open the

@@ -1,8 +1,14 @@
 CHANGELOG
 =========
 
-2017-05-02, Version 02
-----------------------
+2017-05-06, Version 0.3
+-----------------------
+
+* Warn against some more file extensions like `zip` and `rar`
+* Allow to set a user defined text message for notifications
+
+2017-05-02, Version 0.2
+-----------------------
 
 * Allow user to modify the file extensions
 

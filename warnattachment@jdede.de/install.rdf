@@ -6,18 +6,18 @@
   <Description about="urn:mozilla:install-manifest">
     <em:id>warnattachment@jdede.de</em:id>
     <em:name>WarnAttachment</em:name>
-    <em:version>0.2</em:version>
+    <em:version>0.3</em:version>
     <em:creator>Jens Dede</em:creator>
     <em:homepageURL>https://github.com/jdede/WarnAttachment</em:homepageURL>
     <em:optionsURL>chrome://warnattachment/content/options.xul</em:optionsURL>
     <em:optionsType>2</em:optionsType>
     <em:type>2</em:type>
-    <em:description>WarnAttachment shows an additional dialog to confirm potentially dangerous attachments. Some attachments like executables etc. are completely blocked. This reduces the risk of malware especially for inexperienced users.</em:description>
+    <em:description>WarnAttachment shows an additional dialog to confirm opening of potentially dangerous attachments. Some attachments like executables etc. are completely blocked. This reduces the risk of malware especially for inexperienced users.</em:description>
     <em:localized>
         <Description>
             <em:locale>de-DE</em:locale>
             <em:name>WarnAttachment</em:name>
-            <em:description>WarnAttachment zeigt einen zusätzlichen Dialog um das Öffnen von gefährlichen Anhängen zu bestätigen. Einige Anhänge wie z.B. .exe-Dateien werden komplett geblockt. Dies reduziert das Malware-Risiko besonders für unerfahrene Benutzer.</em:description>
+            <em:description>WarnAttachment zeigt einen zusätzlichen Dialog an, um das Öffnen potentiell gefährlicher Anhänge zu bestätigen. Einige Anhänge wie z.B. .exe-Dateien werden komplett geblockt. Dies reduziert das Malware-Risiko besonders für unerfahrene Benutzer.</em:description>
         </Description>
     </em:localized>
     <em:targetApplication>

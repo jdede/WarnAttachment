@@ -7,4 +7,6 @@
     <setting type="string" pref="extensions.warnattachment.warn" title="&options.warn.title;" desc="&options.warn.desc;" />
     <setting type="string" pref="extensions.warnattachment.blocked" title="&options.blocked.title;" desc="&options.blocked.desc;" />
 
+    <setting type="string" pref="extensions.warnattachment.user_warning_msg" title="&options.warn.user.title;" desc="&options.warn.user.desc;" />
+    <setting type="string" pref="extensions.warnattachment.user_blocked_msg" title="&options.blocked.user.title;" desc="&options.blocked.user.desc;" />
 </vbox>
