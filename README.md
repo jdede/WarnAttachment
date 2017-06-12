@@ -2,7 +2,7 @@ WarnAttachment
 ==============
 
 This Thunderbird extension warnst against potential malicious attachments like
-docx and xlsx files. A set of highly risky attachments are blocked (cmd, exe
+docm and xlsm files. A set of highly risky attachments are blocked (cmd, exe
 etc.). See corresponding section in this document for an overview of file
 extensions.
 
@@ -15,13 +15,13 @@ Warning Message Extensions
 A warning message is shown for the following file extensions:
 
 * DOC
-* DOCX
+* DOCM
 * PPT
-* PPTX
+* PPTM
 * XLS
-* XLSX
+* XLSM
 * PPS
-* PPSX
+* PPSM
 * ZIP
 * RAR
 

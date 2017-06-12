@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+2017-06-13, Version 0.4
+-----------------------
+
+* Adapted list of extensions
+
 2017-05-06, Version 0.3
 -----------------------
 
