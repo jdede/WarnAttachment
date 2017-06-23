@@ -6,7 +6,7 @@
   <Description about="urn:mozilla:install-manifest">
     <em:id>warnattachment@jdede.de</em:id>
     <em:name>WarnAttachment</em:name>
-    <em:version>0.4</em:version>
+    <em:version>0.5</em:version>
     <em:creator>Jens Dede</em:creator>
     <em:homepageURL>https://github.com/jdede/WarnAttachment</em:homepageURL>
     <em:optionsURL>chrome://warnattachment/content/options.xul</em:optionsURL>
