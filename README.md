@@ -9,6 +9,9 @@ extensions.
 There is a lot of space for improvements. Feel free to contribute and send pull
 requests.
 
+Special thanks to Sarah (https://www.facebook.com/astriiaillustration/) for
+creating the logo!
+
 Warning Message Extensions
 --------------------------
 

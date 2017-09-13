@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+2017-09-13, Version 0.6
+-----------------------
+
+* New logo. Thanks to Sarah (https://www.facebook.com/astriiaillustration/) for
+  creating it!
+
 2017-06-23, Version 0.5
 -----------------------
 
