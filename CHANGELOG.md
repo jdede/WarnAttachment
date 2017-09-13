@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+2017-09-13, Version 0.7
+-----------------------
+
+* Add HTML and HTM to warn list
+
 2017-09-13, Version 0.6
 -----------------------
 

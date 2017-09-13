@@ -28,6 +28,8 @@ A warning message is shown for the following file extensions:
 * ZIP
 * RAR
 * 7z
+* HTM
+* HTML
 
 These files may contain macro viruses which are nowadays commonly used for
 encryption malware. The user is asked if s/he is really willing to open the
