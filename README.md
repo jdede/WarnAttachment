@@ -114,7 +114,6 @@ TODO
 ====
 
 * The configuration dialog should be extended
-* Nicer icon / logo
 * Migrate to WebExtensions
 
 License
