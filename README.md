@@ -115,6 +115,7 @@ TODO
 
 * The configuration dialog should be extended
 * Migrate to WebExtensions
+* Prevent saving files and not just opening
 
 License
 =======
