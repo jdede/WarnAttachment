@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+2018-10-19, Version 0.8
+-----------------------
+
+* Support of Thunderbird 60
+* New options dialog
+
 2017-09-13, Version 0.7
 -----------------------
 

@@ -1,12 +1,48 @@
-<?xml version="1.0"?>
-
-<!DOCTYPE dialog SYSTEM "chrome://warnattachment/locale/warnattachment.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/preferences/preferences.css" type="text/css"?>
 
-<vbox xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
-    <setting type="string" pref="extensions.warnattachment.warn" title="&options.warn.title;" desc="&options.warn.desc;" />
-    <setting type="string" pref="extensions.warnattachment.blocked" title="&options.blocked.title;" desc="&options.blocked.desc;" />
+<!DOCTYPE prefwindow SYSTEM "chrome://warnattachment/locale/warnattachment.dtd">
 
-    <setting type="string" pref="extensions.warnattachment.user_warning_msg" title="&options.warn.user.title;" desc="&options.warn.user.desc;" />
-    <setting type="string" pref="extensions.warnattachment.user_blocked_msg" title="&options.blocked.user.title;" desc="&options.blocked.user.desc;" />
-</vbox>
+<prefwindow
+    id="warnattachment-Preferences"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+    title="&options.title;">
+    <prefpane id="warnattachment-prefpane-1" label="Prefpane1">
+    <preferences>
+        <preference id="warnattachment-warn" name="extensions.warnattachment.warn" type="string"/>
+        <preference id="warnattachment-blocked" name="extensions.warnattachment.blocked" type="string"/>
+
+        <preference id="warnattachment-warn-msg" name="extensions.warnattachment.user_warning_msg" type="string"/>
+        <preference id="warnattachment-blocked-msg" name="extensions.warnattachment.user_blocked_msg" type="string"/>
+    </preferences>
+
+    <vbox>
+        <vbox>
+            <label control="warnattachment-warn-label" value="&options.warn.title;:"/>
+            <textbox id="warnattachment-warn-label" preference="warnattachment-warn" />
+            <label value="&options.warn.desc;" />
+        </vbox>
+        <separator label="-"/>
+        <vbox>
+            <label control="warnattachment-blocked-label" value="&options.blocked.title;:"/>
+            <textbox id="warnattachment-blocked-label" preference="warnattachment-blocked"/>
+            <label value="&options.blocked.desc;" />
+        </vbox>
+        <separator label="-"/>
+        <vbox>
+            <label control="warnattachment-warn-msg-label" value="&options.warn.user.title;:"/>
+            <textbox id="warnattachment-warn-msg-label" preference="warnattachment-warn-msg"/>
+            <label value="&options.warn.user.desc;" />
+        </vbox>
+        <separator label="-"/>
+        <vbox>
+            <label control="warnattachment-blocked-msg-label" value="&options.blocked.user.title;:"/>
+            <textbox id="warnattachment-blocked-msg-label" preference="warnattachment-blocked-msg"/>
+            <label value="&options.blocked.user.desc;" />
+        </vbox>
+    </vbox>
+
+    <!-- TODO: More information, link etc? //-->
+</prefpane>
+</prefwindow>

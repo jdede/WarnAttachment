@@ -7,3 +7,6 @@
 <!ENTITY options.warn.user.desc "Leer lassen, um Standard zu verwenden.">
 <!ENTITY options.blocked.user.title "Benutzerdefinierte Meldung für blockierte Anhänge">
 <!ENTITY options.blocked.user.desc "Leer lassen, um Standard zu verwenden.">
+
+<!ENTITY app.title "WarnAttachment">
+<!ENTITY options.title "WarnAttachment Einstellungen">

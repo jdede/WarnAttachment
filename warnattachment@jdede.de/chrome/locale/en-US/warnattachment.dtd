@@ -7,3 +7,6 @@
 <!ENTITY options.warn.user.desc "Leave empty to use default message.">
 <!ENTITY options.blocked.user.title "User defined message for blocked attachments">
 <!ENTITY options.blocked.user.desc "Leave empty to use default message.">
+
+<!ENTITY app.title "WarnAttachment">
+<!ENTITY options.title "WarnAttachment Settings">
