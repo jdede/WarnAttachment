@@ -94,6 +94,26 @@ should provide the absolute path to the git repository like for example
 
 Further information can be found [on the mozilla developer webpage](https://developer.mozilla.org/en-US/Add-ons/Thunderbird/Building_a_Thunderbird_extension_7:_Installation)
 
+`chrome.manifest`
+-----------------
+
+The `chrome.manifest` contains the references to the localization files as well
+as to the content of the application. These references differ depending on the
+build type:
+
+* For building the `*.xpi` file, the references need to point to the compressed
+  archives. This is the default setting in the `chrome.manifest`. These
+  settings are also stored in the file `chrome.manifest.compressed` which can
+  be used to recover the original settings.
+
+* For developing (without creating the `*.xpi` file for each step), the
+  extension can be used in an uncompressed way (see previous step). For this,
+  the references in the `chrom.manifest` need to be adapted as done in the file
+  `chrome.manifest.uncompressed`. Copy this file over the original
+  `chrome.manifest` and add the link as mentioned before to the profile /
+  extension directory. **Do not forget to change back to the
+  `chrome.manifest.compressed` before creating the `*.xpi` file!**
+
 Building
 --------
 
@@ -104,6 +124,16 @@ Binaries
 ========
 
 For convenience, the binaries are provided in the [bin](bin) directory.
+
+Compatibility tests
+===================
+
+WarnAttachment is tested using several versions of Thunderbird on a Linux (Debian-based) system. Currently (October 2018), the following Thunderbird versions are tested (subject to change):
+
+* Thunderbird 38
+* Thunderbird 52
+* Thunderbird 60
+
 
 Changelog
 =========
