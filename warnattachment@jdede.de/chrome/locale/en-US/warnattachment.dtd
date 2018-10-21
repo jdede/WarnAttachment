@@ -10,3 +10,5 @@
 
 <!ENTITY app.title "WarnAttachment">
 <!ENTITY options.title "WarnAttachment Settings">
+<!ENTITY options.info.text.link.github "Visit WarnAttachment on github!">
+<!ENTITY options.info.text.link.license "Show license online (GNU General Public License v3.0)">

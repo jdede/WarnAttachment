@@ -42,7 +42,11 @@
             <label value="&options.blocked.user.desc;" />
         </vbox>
     </vbox>
-
-    <!-- TODO: More information, link etc? //-->
+    <separator class="groove-thin"/>
+    <vbox>
+        <label class="text-link" href="https://github.com/jdede/WarnAttachment" value="&options.info.text.link.github;"/>
+        <seperator label="-"/>
+        <label class="text-link" href="https://github.com/jdede/WarnAttachment/blob/master/LICENSE" value="&options.info.text.link.license;"/>
+    </vbox>
 </prefpane>
 </prefwindow>

@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+2018-10-21, Version 0.9
+-----------------------
+
+* Minor changes in the options dialog
+
 2018-10-19, Version 0.8
 -----------------------
 
