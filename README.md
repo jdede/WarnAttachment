@@ -114,13 +114,12 @@ TODO
 ====
 
 * The configuration dialog should be extended
-* Migrate to WebExtensions
 * Prevent saving files and not just opening
 
 License
 =======
 
-Jens Dede <mail@jdede.de>, 2017
+Jens Dede <mail@jdede.de>, 2018
 
 This code is licensed under the GPLv3
 
