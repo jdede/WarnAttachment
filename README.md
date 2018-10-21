@@ -130,9 +130,9 @@ Compatibility tests
 
 WarnAttachment is tested using several versions of Thunderbird on a Linux (Debian-based) system. Currently (October 2018), the following Thunderbird versions are tested (subject to change):
 
-* Thunderbird 38
-* Thunderbird 52
-* Thunderbird 60
+* Thunderbird 38 (German)
+* Thunderbird 52 (German)
+* Thunderbird 60 (German, US-English)
 
 
 Changelog
