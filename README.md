@@ -149,7 +149,7 @@ TODO
 License
 =======
 
-Jens Dede <mail@jdede.de>, 2018
+Jens Dede <warnattachment@jdede.de>, 2018
 
 This code is licensed under the GPLv3
 
