@@ -12,6 +12,8 @@ requests.
 Special thanks to Sarah (https://www.facebook.com/astriiaillustration/) for
 creating the logo!
 
+This extension can be downloaded directly from the Thunderbird add-on repository: https://addons.thunderbird.net/de/thunderbird/addon/warnattachment/
+
 Warning Message Extensions
 --------------------------
 
