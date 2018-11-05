@@ -9,7 +9,7 @@ extensions.
 There is a lot of space for improvements. Feel free to contribute and send pull
 requests.
 
-Special thanks to Sarah [www.astriia.de](http://www.astriia.de/) for
+Special thanks to Sarah ( [www.astriia.de](http://www.astriia.de/) ) for
 creating the logo!
 
 This extension can be downloaded directly from the Thunderbird add-on repository: https://addons.thunderbird.net/de/thunderbird/addon/warnattachment/
