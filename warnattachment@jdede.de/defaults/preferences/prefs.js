@@ -3,3 +3,4 @@ pref("extensions.warnattachment.blocked", "ADE,ADP,BAT,CHM,CMD,COM,CPL,EXE,HTA,I
 
 pref("extensions.warnattachment.user_warning_msg", "");
 pref("extensions.warnattachment.user_blocked_msg", "");
+pref("extensions.warnattachment.timeout", 3);

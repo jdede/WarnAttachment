@@ -33,6 +33,8 @@ if (
         var blockedExt = prefs.getCharPref("blocked").toLowerCase().replace(/\s+/g, '').split(",");
         var warnExt = prefs.getCharPref("warn").toLowerCase().replace(/\s+/g, '').split(",");
 
+        var timeout = prefs.getIntPref("timeout");
+
         // Get extension of current opened file
         var attName = attachment.displayName ? attachment.displayName : attachment.name;
         var ext = attName.substring(attName.lastIndexOf(".")).toLowerCase();
@@ -52,13 +54,21 @@ if (
         // Warn?
         for (var i = 0; i<warnExt.length; i++){
             if ("." + warnExt[i].toLowerCase() == ext){
-                var result = prompts.confirm(null,
+
+                var result = warningDialog(
                     stringsBundle.getString('warningTitle'),
-                    getWarning()
-                );
-                if(result){
+                    getWarning(),
+                    timeout
+                    );
+
+                //var result = prompts.confirm(null,
+                //    stringsBundle.getString('warningTitle'),
+                //    getWarning()
+                //);
+
+                if(result == 1){
                     // User agreed: Open normally
-                    openAttachmentOriginal.apply(this,arguments);
+                    openAttachmentOriginal.apply(this, arguments);
                 }
                 return;
             }
@@ -114,6 +124,28 @@ function getBlocking() {
         return stringsBundle.getString("blockText");
     }
     return msg;
+}
+
+/**
+ * Create a warning dialog
+ * @param title     The title of the dialog
+ * @param text      The info text of the dialog
+ * @param timeout   The timeout in milliseconds
+ */
+function warningDialog(title, text, timeout) {
+    var result = {
+        value: -1
+    };
+    openDialog(
+        "chrome://warnattachment/content/warningdialog.xul",
+        "",
+        "chrome,dialog,modal,centerscreen,resizable",
+        title,
+        text,
+        timeout,
+        result
+    );
+    return result.value;
 }
 
 /**

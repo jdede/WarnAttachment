@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+2018-11-06, Version 0.10
+------------------------
+
+* Add a timeout for the warning dialog
+
 2018-10-21, Version 0.9
 -----------------------
 

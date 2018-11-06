@@ -147,7 +147,6 @@ TODO
 
 * The configuration dialog should be extended
 * Prevent saving files and not just opening
-* Timeout for the warning dialog
 
 License
 =======

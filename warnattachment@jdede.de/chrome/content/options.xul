@@ -15,6 +15,8 @@
 
         <preference id="warnattachment-warn-msg" name="extensions.warnattachment.user_warning_msg" type="string"/>
         <preference id="warnattachment-blocked-msg" name="extensions.warnattachment.user_blocked_msg" type="string"/>
+
+        <preference id="warnattachment-timeout" name="extensions.warnattachment.timeout" type="int"/>
     </preferences>
 
     <vbox>
@@ -41,6 +43,13 @@
             <textbox id="warnattachment-blocked-msg-label" preference="warnattachment-blocked-msg"/>
             <label value="&options.blocked.user.desc;" />
         </vbox>
+        <separator label="-"/>
+        <vbox>
+            <label control="warnattachment-warning-timeout-label" value="&options.timeout.title;:"/>
+            <textbox id="warnattachment-warning-timeout-label" preference="warnattachment-timeout"/>
+            <label value="&options.timeout.desc;" />
+        </vbox>
+
     </vbox>
     <separator class="groove-thin"/>
     <vbox>

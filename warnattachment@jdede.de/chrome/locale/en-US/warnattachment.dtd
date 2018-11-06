@@ -8,6 +8,9 @@
 <!ENTITY options.blocked.user.title "User defined message for blocked attachments">
 <!ENTITY options.blocked.user.desc "Leave empty to use default message.">
 
+<!ENTITY options.timeout.title "Timeout">
+<!ENTITY options.timeout.desc "After this time in seconds, the user can open an attachment.">
+
 <!ENTITY app.title "WarnAttachment">
 <!ENTITY options.title "WarnAttachment Settings">
 <!ENTITY options.info.text.link.github "Visit WarnAttachment on github!">
