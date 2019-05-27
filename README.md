@@ -142,6 +142,12 @@ Changelog
 
 For changes, check the [CHANGELOG.md](CHANGELOG.md) file in the current directory
 
+Known Issues
+============
+
+* Attachment decoded from an TNEF (Outlook / winmail.dat) attachment can not be
+  checked.
+
 TODO
 ====
 
