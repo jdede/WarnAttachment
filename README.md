@@ -130,7 +130,7 @@ For convenience, the binaries are provided in the [bin](bin) directory.
 Compatibility tests
 ===================
 
-WarnAttachment is tested using several versions of Thunderbird on a Linux (Debian-based) system. Currently (October 2018), the following Thunderbird versions are tested (subject to change):
+WarnAttachment is tested using several versions of Thunderbird on a Linux (Debian-based) system. Currently (March 2019), the following Thunderbird versions are tested (subject to change):
 
 * Thunderbird 38 (German)
 * Thunderbird 52 (German)
@@ -157,7 +157,7 @@ TODO
 License
 =======
 
-Jens Dede <warnattachment@jdede.de>, 2018
+Jens Dede <warnattachment@jdede.de>, 2019
 
 This code is licensed under the GPLv3
 
