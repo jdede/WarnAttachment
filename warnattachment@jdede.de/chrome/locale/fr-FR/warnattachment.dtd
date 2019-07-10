@@ -8,10 +8,12 @@
 <!ENTITY options.blocked.user.title "Message personnalisé pour le blocage de fichier">
 <!ENTITY options.blocked.user.desc "Laisser vide pour le message par défaut">
 
+<!ENTITY app.title "WarnAttachment">
+<!ENTITY options.title "WarnAttachment Settings">
+
 <!ENTITY options.timeout.title "Temps mort">
 <!ENTITY options.timeout.desc "Passé ce délai en secondes, l’utilisateur pourra ouvrir la pièce jointe.">
 
-<!ENTITY app.title "WarnAttachment">
-<!ENTITY options.title "WarnAttachment Settings">
+
 <!ENTITY options.info.text.link.github "Visiter WarnAttachment sur github!">
 <!ENTITY options.info.text.link.license "Afficher la licence (GNU General Public License v3.0)">
