@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+2019-07-10, Version 0.11
+------------------------
+
+* Add French translation, thanks to Nicolas (@nilaudat)
+
 2018-11-06, Version 0.10
 ------------------------
 

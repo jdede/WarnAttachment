@@ -154,6 +154,12 @@ TODO
 * The configuration dialog should be extended
 * Prevent saving files and not just opening
 
+Credits
+=======
+
+* Thanks to Sarah ( [www.astriia.de](http://www.astriia.de/) ) for creating the logo.
+* Thanks to Nicolas (@nilaudat) for contributing the French translation.
+
 License
 =======
 
