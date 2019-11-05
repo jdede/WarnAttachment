@@ -1,0 +1,23 @@
+{
+    "manifest_version": 2,
+    "applications": {
+        "gecko": {
+            "id":"warnattachment@jdede.de",
+            "strict_min_version": "68.0"
+        }
+    },
+    "name":"WarnAttachment",
+    "description":"WarnAttachment shows an additional dialog to confirm opening of potentially dangerous attachments. Some attachments like executables etc. are completely blocked. This reduces the risk of malware especially for inexperienced users.",
+    "author": "Jens Dede",
+    "version":"1.0",
+    "icons":{
+        "32":"content/icon.png"
+    },
+    "legacy": {
+        "type":"xul",
+        "options":{
+            "page":"chrome://warnattachment/content/preferences.xul",
+            "open_in_tab":false
+        }
+    }
+}
