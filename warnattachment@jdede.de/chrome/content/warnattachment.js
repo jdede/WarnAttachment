@@ -4,7 +4,7 @@
  * Overwrite the attachment handler to warn against dangerous file extensions
  * and block the most harmful ones.
  *
- * Jens Dede, 2017
+ * Jens Dede, 2019
  *
  */
 
@@ -61,6 +61,7 @@ if (
                     timeout
                     );
 
+                // version w/o timeout
                 //var result = prompts.confirm(null,
                 //    stringsBundle.getString('warningTitle'),
                 //    getWarning()
