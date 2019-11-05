@@ -1,6 +1,18 @@
 CHANGELOG
 =========
 
+2019-11-05, Version 1.0
+-----------------------
+
+* First version 68 compatible version
+* Not fully tested
+* For beta users only
+
+
+Pre Thunderbird 68 versions
+===========================
+
+
 2019-11-05, Version 0.12
 ------------------------
 
