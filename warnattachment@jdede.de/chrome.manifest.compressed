@@ -8,4 +8,5 @@ overlay chrome://messenger/content/msgHdrViewOverlay.xul    chrome://warnattachm
 
 locale  warnattachment   en-US   jar:chrome/warnattachment.jar!/locale/en-US/
 locale  warnattachment   de-DE   jar:chrome/warnattachment.jar!/locale/de-DE/
-
+locale  warnattachment   fr-FR   jar:chrome/warnattachment.jar!/locale/fr-FR/
+locale  warnattachment   it-IT   jar:chrome/warnattachment.jar!/locale/it-IT/
