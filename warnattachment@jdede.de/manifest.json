@@ -6,12 +6,15 @@
             "strict_min_version": "68.0"
         }
     },
+    "default_locale": "en",
     "name":"WarnAttachment",
-    "description":"WarnAttachment shows an additional dialog to confirm opening of potentially dangerous attachments. Some attachments like executables etc. are completely blocked. This reduces the risk of malware especially for inexperienced users.",
+    "description":"__MSG_extensionDescription__",
     "author": "Jens Dede",
+    "homepage_url": "https://github.com/jdede/WarnAttachment",
     "version":"1.0",
     "icons":{
-        "32":"content/icon.png"
+        "32":"content/icon.png",
+        "64":"content/icon64.png"
     },
     "legacy": {
         "type":"xul",
