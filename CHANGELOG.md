@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+2019-11-05, Version 0.12
+------------------------
+
+* Add Italian translation, thanks to Massimiliano (@m-ferrero)
+
 2019-07-10, Version 0.11
 ------------------------
 

@@ -159,6 +159,7 @@ Credits
 
 * Thanks to Sarah ( [www.astriia.de](http://www.astriia.de/) ) for creating the logo.
 * Thanks to Nicolas (@nilaudat) for contributing the French translation.
+* Thanks to Massimiliano (@m-ferrero) for contributing the Italian translation.
 
 License
 =======
