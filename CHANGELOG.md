@@ -1,5 +1,11 @@
-CHANGELOG
+CANGELOG
 =========
+
+2019-11-06, Version 1.1
+-----------------------
+
+* Add translations of the descriptions
+* Minor changes for compatibility with TB 71
 
 2019-11-05, Version 1.0
 -----------------------
