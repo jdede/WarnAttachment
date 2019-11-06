@@ -1,7 +1,7 @@
 all:warnattachment.jar warnattachment.xpi
 
 JAR_DIR = chrome
-FILES = chrome/warnattachment.jar chrome.manifest defaults/preferences/*.js manifest.json _locales/*/messages.json
+FILES = chrome/warnattachment.jar chrome.manifest defaults/preferences/*.js manifest.json _locales/*/messages.json icons/*.png
 
 .PHONY: warnattachment.jar
 
