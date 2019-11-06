@@ -14,6 +14,20 @@ creating the logo!
 
 This extension can be downloaded directly from the Thunderbird add-on repository: https://addons.thunderbird.net/de/thunderbird/addon/warnattachment/
 
+Version numbering
+-----------------
+
+The Thunderbird API is constantly changing and this extension has to be adapted
+accordingly. Currently, two branches exist:
+
+* Major version number starting with 0, i.e. 0.12 is for Thunderbird 60.x and
+  below.
+* Major version number starting with 1, i.e. 1.1 is for Thunderbird 68.x and
+  above.
+
+I try my best to test all possible combinations. If you find any problems, feel
+free to open an issue or drop me a line.
+
 Warning Message Extensions
 --------------------------
 
@@ -130,12 +144,19 @@ For convenience, the binaries are provided in the [bin](bin) directory.
 Compatibility tests
 ===================
 
-WarnAttachment is tested using several versions of Thunderbird on a Linux (Debian-based) system. Currently (March 2019), the following Thunderbird versions are tested (subject to change):
+WarnAttachment is tested using several versions of Thunderbird on a Linux (Debian-based) system. Currently (November 2019), the following Thunderbird versions are tested (subject to change):
+
+Thunderbird till version 60.x
+-----------------------------
 
 * Thunderbird 38 (German)
 * Thunderbird 52 (German)
-* Thunderbird 60 (German, US-English)
+* Thunderbird 60 (German, US-English, French)
 
+Starting with version 68.x
+--------------------------
+
+* Thunderbird 60 (German, US-English, French, Italian)
 
 Changelog
 =========
