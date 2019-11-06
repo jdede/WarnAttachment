@@ -156,7 +156,8 @@ Thunderbird till version 60.x
 Starting with version 68.x
 --------------------------
 
-* Thunderbird 60 (German, US-English, French, Italian)
+* Thunderbird 68 (German, US-English, French, Italian)
+* Thunderbird 71.0b2 (German)
 
 Changelog
 =========
