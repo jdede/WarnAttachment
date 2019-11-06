@@ -1,6 +1,15 @@
 CANGELOG
 =========
 
+2019-11-06, Version 1.2
+-----------------------
+
+* Icon fixes
+* Move icons to separate directory
+* Use uncompress (jar-less) format
+* Remove old Makefiles
+* Remove old dummy chrome.manifest-files
+
 2019-11-06, Version 1.1
 -----------------------
 
