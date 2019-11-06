@@ -11,7 +11,7 @@
     "description":"__MSG_extensionDescription__",
     "author": "Jens Dede",
     "homepage_url": "https://github.com/jdede/WarnAttachment",
-    "version":"1.0",
+    "version":"1.1",
     "icons":{
         "32":"content/icon.png",
         "64":"content/icon64.png"
