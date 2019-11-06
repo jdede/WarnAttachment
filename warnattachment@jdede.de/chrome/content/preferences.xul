@@ -6,37 +6,38 @@
 <dialog
     id="warnattachment-Preferences"
     xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-title="&options.title;"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    title="&options.title;"
     buttons="accept">
 
     <vbox>
         <vbox>
             <label control="warnattachment-warn-label" value="&options.warn.title;:"/>
-            <textbox id="warnattachment-warn-label" preference="extensions.warnattachment.warn" />
+            <html:input id="warnattachment-warn-label" preference="extensions.warnattachment.warn" />
             <label value="&options.warn.desc;" />
         </vbox>
         <separator label="-"/>
         <vbox>
             <label control="warnattachment-blocked-label" value="&options.blocked.title;:"/>
-            <textbox id="warnattachment-blocked-label" preference="extensions.warnattachment.blocked"/>
+            <html:input id="warnattachment-blocked-label" preference="extensions.warnattachment.blocked"/>
             <label value="&options.blocked.desc;" />
         </vbox>
         <separator label="-"/>
         <vbox>
             <label control="warnattachment-warn-msg-label" value="&options.warn.user.title;:"/>
-            <textbox id="warnattachment-warn-msg-label" preference="extensions.warnattachment.user_warning_msg"/>
+            <html:input id="warnattachment-warn-msg-label" preference="extensions.warnattachment.user_warning_msg"/>
             <label value="&options.warn.user.desc;" />
         </vbox>
         <separator label="-"/>
         <vbox>
             <label control="warnattachment-blocked-msg-label" value="&options.blocked.user.title;:"/>
-            <textbox id="warnattachment-blocked-msg-label" preference="extensions.warnattachment.user_blocked_msg"/>
+            <html:input id="warnattachment-blocked-msg-label" preference="extensions.warnattachment.user_blocked_msg"/>
             <label value="&options.blocked.user.desc;" />
         </vbox>
         <separator label="-"/>
         <vbox>
             <label control="warnattachment-warning-timeout-label" value="&options.timeout.title;:"/>
-            <textbox id="warnattachment-warning-timeout-label" preference="extensions.warnattachment.timeout"/>
+            <html:input type="number" id="warnattachment-warning-timeout-label" preference="extensions.warnattachment.timeout" />
             <label value="&options.timeout.desc;" />
         </vbox>
 
