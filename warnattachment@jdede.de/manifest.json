@@ -13,7 +13,7 @@
     "homepage_url": "https://github.com/jdede/WarnAttachment",
     "version":"1.2",
     "icons":{
-        "32" : "icons/icon.png"
+        "32" : "icons/icon32.png"
     },
     "legacy": {
         "type":"xul",
