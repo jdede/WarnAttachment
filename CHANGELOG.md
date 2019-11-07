@@ -1,5 +1,32 @@
-CHANGELOG
+CANGELOG
 =========
+
+2019-11-06, Version 1.2
+-----------------------
+
+* Icon fixes
+* Move icons to separate directory
+* Use uncompress (jar-less) format
+* Remove old Makefiles
+* Remove old dummy chrome.manifest-files
+
+2019-11-06, Version 1.1
+-----------------------
+
+* Add translations of the descriptions
+* Minor changes for compatibility with TB 71
+
+2019-11-05, Version 1.0
+-----------------------
+
+* First version 68 compatible version
+* Not fully tested
+* For beta users only
+
+
+Pre Thunderbird 68 versions
+===========================
+
 
 2019-11-05, Version 0.12
 ------------------------

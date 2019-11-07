@@ -31,6 +31,14 @@ function onLoad() {
         acceptButton.setAttribute("label", secondsLeft);
         intervalId = window.setInterval(updateOkButton, 1000);
     }
+
+    document.addEventListener("dialogaccept", function(event) {
+        doOK();
+    });
+
+    document.addEventListener("dialogcancel", function(event) {
+        doCancel();
+    });
 }
 
 

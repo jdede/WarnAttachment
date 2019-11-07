@@ -1,52 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
-<?xml-stylesheet href="chrome://messenger/skin/preferences/preferences.css" type="text/css"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/preferences/preferences.css"?>
+<!DOCTYPE dialog SYSTEM "chrome://warnattachment/locale/warnattachment.dtd">
 
-<!DOCTYPE prefwindow SYSTEM "chrome://warnattachment/locale/warnattachment.dtd">
-
-<prefwindow
+<dialog
     id="warnattachment-Preferences"
     xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-    title="&options.title;">
-    <prefpane id="warnattachment-prefpane-1" label="Prefpane1">
-    <preferences>
-        <preference id="warnattachment-warn" name="extensions.warnattachment.warn" type="string"/>
-        <preference id="warnattachment-blocked" name="extensions.warnattachment.blocked" type="string"/>
-
-        <preference id="warnattachment-warn-msg" name="extensions.warnattachment.user_warning_msg" type="string"/>
-        <preference id="warnattachment-blocked-msg" name="extensions.warnattachment.user_blocked_msg" type="string"/>
-
-        <preference id="warnattachment-timeout" name="extensions.warnattachment.timeout" type="int"/>
-    </preferences>
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    title="&options.title;"
+    buttons="accept">
 
     <vbox>
         <vbox>
             <label control="warnattachment-warn-label" value="&options.warn.title;:"/>
-            <textbox id="warnattachment-warn-label" preference="warnattachment-warn" />
+            <html:input id="warnattachment-warn-label" preference="extensions.warnattachment.warn" />
             <label value="&options.warn.desc;" />
         </vbox>
         <separator label="-"/>
         <vbox>
             <label control="warnattachment-blocked-label" value="&options.blocked.title;:"/>
-            <textbox id="warnattachment-blocked-label" preference="warnattachment-blocked"/>
+            <html:input id="warnattachment-blocked-label" preference="extensions.warnattachment.blocked"/>
             <label value="&options.blocked.desc;" />
         </vbox>
         <separator label="-"/>
         <vbox>
             <label control="warnattachment-warn-msg-label" value="&options.warn.user.title;:"/>
-            <textbox id="warnattachment-warn-msg-label" preference="warnattachment-warn-msg"/>
+            <html:input id="warnattachment-warn-msg-label" preference="extensions.warnattachment.user_warning_msg"/>
             <label value="&options.warn.user.desc;" />
         </vbox>
         <separator label="-"/>
         <vbox>
             <label control="warnattachment-blocked-msg-label" value="&options.blocked.user.title;:"/>
-            <textbox id="warnattachment-blocked-msg-label" preference="warnattachment-blocked-msg"/>
+            <html:input id="warnattachment-blocked-msg-label" preference="extensions.warnattachment.user_blocked_msg"/>
             <label value="&options.blocked.user.desc;" />
         </vbox>
         <separator label="-"/>
         <vbox>
             <label control="warnattachment-warning-timeout-label" value="&options.timeout.title;:"/>
-            <textbox id="warnattachment-warning-timeout-label" preference="warnattachment-timeout"/>
+            <html:input type="number" id="warnattachment-warning-timeout-label" preference="extensions.warnattachment.timeout" />
             <label value="&options.timeout.desc;" />
         </vbox>
 
@@ -57,5 +48,13 @@
         <seperator label="-"/>
         <label class="text-link" href="https://github.com/jdede/WarnAttachment/blob/master/LICENSE" value="&options.info.text.link.license;"/>
     </vbox>
-</prefpane>
-</prefwindow>
+
+  <script
+     src="chrome://global/content/preferencesBindings.js"
+     type="application/javascript"/>
+  <script
+      src="chrome://warnattachment/content/preferences.js"
+     type="application/javascript"/>
+
+</dialog>
+

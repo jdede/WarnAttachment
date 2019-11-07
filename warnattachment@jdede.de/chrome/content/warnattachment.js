@@ -4,7 +4,7 @@
  * Overwrite the attachment handler to warn against dangerous file extensions
  * and block the most harmful ones.
  *
- * Jens Dede, 2017
+ * Jens Dede, 2019
  *
  */
 
@@ -61,6 +61,7 @@ if (
                     timeout
                     );
 
+                // version w/o timeout
                 //var result = prompts.confirm(null,
                 //    stringsBundle.getString('warningTitle'),
                 //    getWarning()
@@ -89,12 +90,7 @@ function getWarning() {
 
     var stringsBundle = document.getElementById("warnAttachmentStringbundle");
 
-    var msg
-    if (isTbVer60())
-        msg = prefs.getStringPref("user_warning_msg");
-    else
-        msg = prefs.getComplexValue("user_warning_msg",
-            Components.interfaces.nsISupportsString).data;
+    var msg = prefs.getStringPref("user_warning_msg");
 
     if (msg == "") {
         return stringsBundle.getString("warningText");
@@ -113,12 +109,7 @@ function getBlocking() {
 
     var stringsBundle = document.getElementById("warnAttachmentStringbundle");
 
-    var msg
-    if (isTbVer60())
-        msg = prefs.getStringPref("user_blocked_msg");
-    else
-        msg = prefs.getComplexValue("user_blocked_msg",
-            Components.interfaces.nsISupportsString).data;
+    var msg = prefs.getStringPref("user_blocked_msg");
 
     if (msg == "") {
         return stringsBundle.getString("blockText");
@@ -147,24 +138,4 @@ function warningDialog(title, text, timeout) {
     );
     return result.value;
 }
-
-/**
- * Check if we are on TB 60+
- */
-function isTbVer60() {
-var version;
-    if ( "@mozilla.org/xre/app-info;1" in Components.classes )
-        version = Components.classes["@mozilla.org/xre/app-info;1"].getService(Components.interfaces.nsIXULAppInfo).version;
-    else
-        version = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch).getCharPref("app.version");
-
-    var versionChecker =
-        Components.classes["@mozilla.org/xpcom/version-comparator;1"].getService(Components.interfaces.nsIVersionComparator);
-
-    if (versionChecker.compare(version, "60") >= 0) {
-        return true;
-    }
-    return false;
-}
-
 
