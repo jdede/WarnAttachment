@@ -1,6 +1,11 @@
 CANGELOG
 =========
 
+2020-11-22, Version 2.0
+-----------------------
+
+* Completely rewritten based on MailExtensions
+
 2019-11-06, Version 1.2
 -----------------------
 
