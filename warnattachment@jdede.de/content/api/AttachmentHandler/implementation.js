@@ -2,6 +2,7 @@
 
 var { ExtensionCommon } = ChromeUtils.import("resource://gre/modules/ExtensionCommon.jsm");
 var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
+const LISTENER_NAME = "warnattachmentExperimentListener_";
 
 function log(msg){
   Services.console.logStringMessage(msg);
@@ -36,7 +37,6 @@ var AttachmentHandler = class extends ExtensionCommon.ExtensionAPI {
 var { ExtensionSupport } = ChromeUtils.import("resource:///modules/ExtensionSupport.jsm");
 
 var windowListener = new class extends ExtensionCommon.EventEmitter {
-  LISTENER_NAME = "warnattachmentExperimentListener_";
 
   // save the original opener for attachments for later use
   setOldOpener (o){
@@ -60,7 +60,7 @@ var windowListener = new class extends ExtensionCommon.EventEmitter {
 
     if (this.callbackCount == 1) {
       this.callback = callback;
-      ExtensionSupport.registerWindowListener(this.LISTENER_NAME, {
+      ExtensionSupport.registerWindowListener(LISTENER_NAME, {
         chromeURLs: [
           "chrome://messenger/content/messenger.xhtml",
           "chrome://messenger/content/messenger.xul",
@@ -104,7 +104,7 @@ var windowListener = new class extends ExtensionCommon.EventEmitter {
           window.AttachmentInfo.prototype.open = this.getOldOpener();
         }
       }
-      ExtensionSupport.unregisterWindowListener(this.LISTENER_NAME);
+      ExtensionSupport.unregisterWindowListener(LISTENER_NAME);
       this.callback = undefined;
     }
   }

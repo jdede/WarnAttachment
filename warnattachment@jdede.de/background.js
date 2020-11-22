@@ -40,7 +40,6 @@ async function migratePrefs() {
     prefs.migratedLegacy = warnAttachmentCurrentLegacyMigrationVersion;
     await browser.storage.local.set(prefs);
     console.log("migration done");
-    console.log(prefs);
 }
 
 // Callback for the opener
