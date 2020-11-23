@@ -55,5 +55,13 @@
   },
   "options.resetsettings":{
       "message" : "Auf Standardeinstellungen zurücksetzen"
+  },
+  "options.notification.resetdone":
+  {
+      "message" : "Standardwerte geladen"
+  },
+  "options.notification.savedone" :
+  {
+      "message" : "Änderungen gespeichert"
   }
 }

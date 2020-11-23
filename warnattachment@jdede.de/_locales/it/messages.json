@@ -55,5 +55,13 @@
   },
   "options.resetsettings":{
       "message" : "Ripristina le impostazioni predefinite"
+  },
+  "options.notification.resetdone":
+  {
+      "message" : "Valori predefiniti caricati"
+  },
+  "options.notification.savedone" :
+  {
+      "message" : "modifiche salvate"
   }
 }

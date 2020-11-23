@@ -55,5 +55,13 @@
   },
   "options.resetsettings":{
      "message" : "Réinitialiser les paramètres par défaut"
+  },
+  "options.notification.resetdone":
+  {
+      "message" : "Valeurs par défaut chargées"
+  },
+  "options.notification.savedone" :
+  {
+      "message" : "Changements sauvegardés"
   }
 }

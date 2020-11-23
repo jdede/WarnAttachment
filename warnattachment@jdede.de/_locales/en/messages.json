@@ -56,6 +56,14 @@
   "options.resetsettings":{
       "message" : "Reset to defaults"
   },
+  "options.notification.resetdone":
+  {
+      "message" : "Reset done"
+  },
+  "options.notification.savedone" :
+  {
+      "message" : "Changes successfully saved"
+  },
   "app.title" : {
       "message" : "WarnAttachment"
   },

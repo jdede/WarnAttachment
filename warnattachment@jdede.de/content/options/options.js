@@ -2,6 +2,7 @@
 
 // workaround as browser seems to be broken in here
 const browser = window.browser.extension.getBackgroundPage().browser;
+var timeoutTimer = -1; // event id for timeout, required to cancel timer
 
 
 // Callback: called if the settings from the option page should be saved *
@@ -16,6 +17,7 @@ function saveOptions(e) {
 
     if (e !== undefined){
       e.preventDefault();
+      showMessage(browser.i18n.getMessage("options.notification.savedone"));
     }
 }
 
@@ -52,6 +54,23 @@ function reset(){
   document.querySelector("#warnattachment-user-warn-message").value = "";
   document.querySelector("#warnattachment-user-blocked-message").value = "";
   saveOptions();
+  showMessage(browser.i18n.getMessage("options.notification.resetdone"));
+
+}
+
+function showMessage(msg){
+  if (timeoutTimer > 0){
+    clearTimeout(timeoutTimer);
+  }
+  let element = document.querySelector("#infobox");
+  element.innerHTML = msg;
+  element.style.display = "block";
+  timeoutTimer = setTimeout(function() {
+    let element = document.querySelector("#infobox");
+    element.innerHTML = "";
+    element.style.display = "none";
+    timeoutTimer = -1;
+  }, 3000);
 }
 
 // events
