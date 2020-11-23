@@ -1,7 +1,7 @@
 // WarnAttachment
 // Jens Dede, 2020
 
-const warnAttachmentCurrentLegacyMigrationVersion = 1
+const warnAttachmentCurrentLegacyMigrationVersion = 2
 
 // We hijack the translation mechanism to have a single point of truth for the
 // file extensions. Only defined for the default language: English
