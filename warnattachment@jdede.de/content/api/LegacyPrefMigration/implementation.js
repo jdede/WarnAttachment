@@ -18,7 +18,7 @@ var LegacyPrefMigration = class extends ExtensionCommon.ExtensionAPI {
                     return Services.prefs.getIntPref(WARNATTACHMENT_EXTENSION_BASE_PREF_NAME + name);
                 }
 
-                return Services.prefs.getCharPref(WARNATTACHMENT_EXTENSION_BASE_PREF_NAME+name);
+                return Services.prefs.getStringPref(WARNATTACHMENT_EXTENSION_BASE_PREF_NAME+name);
 
             } catch(ex){
                 return undefined;
