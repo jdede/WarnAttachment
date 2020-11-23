@@ -52,5 +52,8 @@
   },
   "options.savesettings":{
       "message" : "Enregistrer les paramètres"
+  },
+  "options.resetsettings":{
+     "message" : "Réinitialiser les paramètres par défaut"
   }
 }

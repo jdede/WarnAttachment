@@ -14,7 +14,9 @@ function saveOptions(e) {
     }
     browser.storage.local.set(prefs);
 
-  e.preventDefault();
+    if (e !== undefined){
+      e.preventDefault();
+    }
 }
 
 // Get the options from the storage backend and fill the form
@@ -44,6 +46,15 @@ function startup() {
     restoreOptions();
 }
 
+function reset(){
+  document.querySelector("#warnattachment-warning").value = browser.i18n.getMessage("warningMessageTypes");
+  document.querySelector("#warnattachment-blocking").value = browser.i18n.getMessage("blockingMessageTypes");
+  document.querySelector("#warnattachment-user-warn-message").value = "";
+  document.querySelector("#warnattachment-user-blocked-message").value = "";
+  saveOptions();
+}
+
 // events
 document.addEventListener('DOMContentLoaded', startup);
 document.querySelector("form").addEventListener("submit", saveOptions);
+document.querySelector("#warnattachment-reset-button").addEventListener("click", reset);

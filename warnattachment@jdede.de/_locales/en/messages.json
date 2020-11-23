@@ -53,6 +53,9 @@
   "options.savesettings":{
       "message" : "Save settings"
   },
+  "options.resetsettings":{
+      "message" : "Reset to defaults"
+  },
   "app.title" : {
       "message" : "WarnAttachment"
   },
