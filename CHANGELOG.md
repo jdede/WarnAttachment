@@ -1,6 +1,14 @@
 CANGELOG
 =========
 
+2020-11-23, Version 2.1
+-----------------------
+
+* Add reset button for settings
+* Show notification after saving / resetting settings
+* Bugfix: Import settings correctly
+
+
 2020-11-22, Version 2.0
 -----------------------
 
