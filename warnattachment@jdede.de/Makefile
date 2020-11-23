@@ -4,5 +4,5 @@ FILES = .
 
 warnattachment.xpi: $(FILES)
 	rm -f ../$@
-	zip -r ../$@ $^
+	zip -r ../$@ $^ -x Makefile *.swp
 
