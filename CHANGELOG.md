@@ -1,6 +1,11 @@
 CANGELOG
 =========
 
+2020-11-26, Version 2.2
+-----------------------
+
+* Bugfix: keep original handler in window object
+
 2020-11-23, Version 2.1
 -----------------------
 
