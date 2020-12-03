@@ -1,6 +1,11 @@
 CANGELOG
 =========
 
+2020-12-03, Version 2.3
+-----------------------
+
+* Add Polish translation, thanks to Mariusz 
+
 2020-11-26, Version 2.2
 -----------------------
 
