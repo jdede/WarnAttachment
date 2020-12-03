@@ -33,13 +33,13 @@
       "message" : "Komunikat ostrzegawczy zdefiniowany przez użytkownika:"
   },
   "options.warn.user.desc" : {
-      "message" : "Pozostaw puste pole, aby użyć domyślnej wiadomości."
+      "message" : "Pozostaw puste pole, aby użyć domyślnego komunikatu."
   },
   "options.blocked.user.title" : {
       "message" : "Komunikat dla zablokowanych plików zdefiniowany przez użytkownika:"
   },
   "options.blocked.user.desc" : {
-      "message" : "Pozostaw puste pole, aby użyć domyślnej wiadomości."
+      "message" : "Pozostaw puste pole, aby użyć domyślnego komunikatu."
   },
   "options.title" : {
       "message" : "Ustawienia WarnAttachment"
@@ -58,10 +58,10 @@
   },
   "options.notification.resetdone":
   {
-      "message" : "Przywrócono wartości domyślne"
+      "message" : "Przywrócono ustawienia domyślne"
   },
   "options.notification.savedone" :
   {
-      "message" : "Zmiany zostały zapisane"
+      "message" : "Zmiany ustawień zostały zapisane"
   }
 }
