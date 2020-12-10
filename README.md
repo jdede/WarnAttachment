@@ -9,7 +9,7 @@ extensions.
 There is a lot of space for improvements. Feel free to contribute and send pull
 requests.
 
-Special thanks to Sarah ( [www.astriia.de](http://www.astriia.de/) ) for
+Special thanks to Sarah (astriia) for
 creating the logo!
 
 This extension can be downloaded directly from the Thunderbird add-on repository: https://addons.thunderbird.net/de/thunderbird/addon/warnattachment/
@@ -113,8 +113,7 @@ extensions.
 There is a lot of space for improvements. Feel free to contribute and send pull
 requests.
 
-Special thanks to Sarah ( [www.astriia.de](http://www.astriia.de/) ) for
-creating the logo!
+Special thanks to Sarah (astriia) for creating the logo!
 
 This extension can be downloaded directly from the Thunderbird add-on repository: https://addons.thunderbird.net/de/thunderbird/addon/warnattachment/
 
@@ -262,10 +261,10 @@ TODO
 Credits
 =======
 
-* Thanks to Sarah ( [www.astriia.de](http://www.astriia.de/) ) for creating the logo.
+* Thanks to Sarah (astriia) for creating the logo.
 * Thanks to Nicolas (@nilaudat) for contributing the French translation.
 * Thanks to Massimiliano (@m-ferrero) for contributing the Italian translation.
-* Thanks to Mariusz  (@MX\_EH) for contributing the Polish translation.
+* Thanks to Mariusz  (MX\_EH) for contributing the Polish translation.
 
 License
 =======
