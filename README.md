@@ -102,8 +102,7 @@ Testing
 -------
 
 Thunderbird offers a nice tutorial on MailExtensions:
-[developer.thunderbird.net](WarnAttachment
-==============
+[developer.thunderbird.net](WarnAttachment)
 
 This Thunderbird extension warnst against potential malicious attachments like
 docm and xlsm files. A set of highly risky attachments are blocked (cmd, exe
