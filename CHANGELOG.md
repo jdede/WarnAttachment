@@ -1,10 +1,16 @@
 CANGELOG
 =========
 
+2021-05-14, Version 2.4
+-----------------------
+
+* Add Spanish translation, thanks to Nacho Lustres
+* Tested with Thunderbird 84.0b3
+
 2020-12-03, Version 2.3
 -----------------------
 
-* Add Polish translation, thanks to Mariusz 
+* Add Polish translation, thanks to Mariusz
 
 2020-11-26, Version 2.2
 -----------------------

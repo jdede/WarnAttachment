@@ -238,7 +238,8 @@ Starting with version 68.x
 --------------------------
 
 * Thunderbird 68 (German, US-English, French, Italian)
-* Thunderbird 71.0b2 (German)
+* Thunderbird 78 (German, US-English, Spanish, Polish)
+* Thunderbird 84b (US-English)
 
 Changelog
 =========
@@ -256,6 +257,7 @@ TODO
 
 * The configuration dialog should be extended
 * Prevent saving files and not just opening
+* Migrate to native message API
 
 Credits
 =======
@@ -264,11 +266,12 @@ Credits
 * Thanks to Nicolas (@nilaudat) for contributing the French translation.
 * Thanks to Massimiliano (@m-ferrero) for contributing the Italian translation.
 * Thanks to Mariusz  (MX\_EH) for contributing the Polish translation.
+* Thanks to Nacho for contributing the Spanish translation
 
 License
 =======
 
-Jens Dede <warnattachment@jdede.de>, 2019
+Jens Dede <warnattachment@jdede.de>, 2021
 
 This code is licensed under the GPLv3
 
