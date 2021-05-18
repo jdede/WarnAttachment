@@ -239,7 +239,7 @@ Starting with version 68.x
 
 * Thunderbird 68 (German, US-English, French, Italian)
 * Thunderbird 78 (German, US-English, Spanish, Polish)
-* Thunderbird 84b (US-English)
+* Thunderbird 89b (US-English)
 
 Changelog
 =========

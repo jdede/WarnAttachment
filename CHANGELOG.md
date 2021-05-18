@@ -5,7 +5,7 @@ CANGELOG
 -----------------------
 
 * Add Spanish translation, thanks to Nacho Lustres
-* Tested with Thunderbird 84.0b3
+* Tested with Thunderbird 89.0b4
 
 2020-12-03, Version 2.3
 -----------------------
