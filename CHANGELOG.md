@@ -1,6 +1,12 @@
 CANGELOG
 =========
 
+2021-09-23, Version 2.6
+-----------------------
+
+* Add inetloc to blocked file extensions: 0-day exploit for MaxOS.
+
+
 2021-09-19, Version 2.5
 -----------------------
 
