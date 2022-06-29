@@ -1,6 +1,12 @@
 CANGELOG
 =========
 
+2022-06-29, Version 2.7
+-----------------------
+
+* Increased max version number
+* Tested with version 102
+
 2021-09-23, Version 2.6
 -----------------------
 

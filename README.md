@@ -92,6 +92,7 @@ is [this google mail support page](https://support.google.com/mail/answer/6590):
 * WSC
 * WSF
 * WSH
+* INETLOC
 
 **The user can not open attachments with these extensions.**
 
@@ -196,6 +197,7 @@ is [this google mail support page](https://support.google.com/mail/answer/6590):
 * WSC
 * WSF
 * WSH
+* INETLOC
 
 **The user can not open attachments with these extensions.**
 
@@ -240,6 +242,8 @@ Starting with version 68.x
 * Thunderbird 68 (German, US-English, French, Italian)
 * Thunderbird 78 (German, US-English, Spanish, Polish)
 * Thunderbird 89b (US-English)
+* Thunderbird 91 (German)
+* Thunderbird 102 (German)
 
 Changelog
 =========
@@ -271,7 +275,7 @@ Credits
 License
 =======
 
-Jens Dede <warnattachment@jdede.de>, 2021
+Jens Dede <warnattachment@jdede.de>, 2022
 
 This code is licensed under the GPLv3
 
