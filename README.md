@@ -93,6 +93,9 @@ is [this google mail support page](https://support.google.com/mail/answer/6590):
 * WSF
 * WSH
 * INETLOC
+* IMG
+* ISO
+* DIAGCAB
 
 **The user can not open attachments with these extensions.**
 
@@ -132,74 +135,6 @@ accordingly. Currently, several branches exist:
 
 I try my best to test all possible combinations. If you find any problems, feel
 free to open an issue or drop me a line.
-
-Warning Message Extensions
---------------------------
-
-A warning message is shown for the following file extensions:
-
-* DOC
-* DOCM
-* PPT
-* PPTM
-* XLS
-* XLSM
-* PPS
-* PPSM
-* ZIP
-* RAR
-* 7z
-* HTM
-* HTML
-
-These files may contain macro viruses which are nowadays commonly used for
-encryption malware. The user is asked if s/he is really willing to open the
-file and if it is from a trustworthy source.
-
-Block Message Extensions
-------------------------
-
-The following extensions are blocked completely. The user is not able to open
-these files (besides deactivating the plugin). The source of these file types
-is [this google mail support page](https://support.google.com/mail/answer/6590):
-
-* ADE
-* ADP
-* BAT
-* CHM
-* CMD
-* COM
-* CPL
-* EXE
-* HTA
-* INS
-* ISP
-* JAR
-* JS
-* JSE
-* LIB
-* LNK
-* MDE
-* MSC
-* MSI
-* MSP
-* MST
-* NSH
-* PIF
-* SCR
-* SCT
-* SHB
-* SYS
-* VB
-* VBE
-* VBS
-* VXD
-* WSC
-* WSF
-* WSH
-* INETLOC
-
-**The user can not open attachments with these extensions.**
 
 Development
 ===========

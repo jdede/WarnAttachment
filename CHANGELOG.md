@@ -1,6 +1,12 @@
 CANGELOG
 =========
 
+
+2022-07-29, Version 2.8
+-----------------------
+
+* Added some more file extensions to the blocking list: iso, img diagcab
+
 2022-06-29, Version 2.7
 -----------------------
 
