@@ -1,7 +1,9 @@
 // Experimental API: Allows to register a callback to the attachment opener
 
 var { ExtensionCommon } = ChromeUtils.import("resource://gre/modules/ExtensionCommon.jsm");
-var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
+const Services = globalThis.Services || ChromeUtils.import(
+  "resource://gre/modules/Services.jsm"
+).Services;
 const LISTENER_NAME = "warnattachmentExperimentListener_";
 
 function log(msg){
