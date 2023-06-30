@@ -1,7 +1,9 @@
 // A basic UI for blocking dialogs
 //
 var { ExtensionCommon } = ChromeUtils.import("resource://gre/modules/ExtensionCommon.jsm");
-var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
+const Services = globalThis.Services || ChromeUtils.import(
+  "resource://gre/modules/Services.jsm"
+).Services;
 
 
 var DialogExperiment = class extends ExtensionCommon.ExtensionAPI {

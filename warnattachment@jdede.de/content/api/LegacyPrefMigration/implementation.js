@@ -1,7 +1,9 @@
 // Basic helper for preferences migration
 
 var { ExtensionCommon } = ChromeUtils.import("resource://gre/modules/ExtensionCommon.jsm");
-var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
+const Services = globalThis.Services || ChromeUtils.import(
+  "resource://gre/modules/Services.jsm"
+).Services;
 
 const WARNATTACHMENT_EXTENSION_BASE_PREF_NAME = "extensions.warnattachment.";
 
