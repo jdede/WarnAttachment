@@ -1,7 +1,7 @@
 // Basic helper for preferences migration
 
 var { ExtensionCommon } = ChromeUtils.import("resource://gre/modules/ExtensionCommon.jsm");
-const Services = globalThis.Services || ChromeUtils.import(
+var Services = globalThis.Services || ChromeUtils.import(
   "resource://gre/modules/Services.jsm"
 ).Services;
 
