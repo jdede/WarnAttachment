@@ -2,6 +2,11 @@ CANGELOG
 =========
 
 
+2023-06-30, Version 2.9
+-----------------------
+
+* Use Services global variable if possible, thanks to arai-a
+
 2022-07-29, Version 2.8
 -----------------------
 

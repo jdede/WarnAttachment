@@ -206,11 +206,12 @@ Credits
 * Thanks to Massimiliano (@m-ferrero) for contributing the Italian translation.
 * Thanks to Mariusz  (MX\_EH) for contributing the Polish translation.
 * Thanks to Nacho for contributing the Spanish translation
+* Thanks to arai-a for the global services fix
 
 License
 =======
 
-Jens Dede <warnattachment@jdede.de>, 2022
+Jens Dede <warnattachment@jdede.de>, 2023
 
 This code is licensed under the GPLv3
 
