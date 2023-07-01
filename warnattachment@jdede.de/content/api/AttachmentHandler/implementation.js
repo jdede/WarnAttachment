@@ -6,6 +6,18 @@ var Services = globalThis.Services || ChromeUtils.import(
 ).Services;
 const LISTENER_NAME = "warnattachmentExperimentListener_";
 
+// Before bug 1696777, AttachmentInfo has been global variable, but
+// the patch moved it into a system module.
+var ModuleAttachmentInfo = null;
+var ModuleOriginalOpener = null;
+try {
+  ModuleAttachmentInfo = ChromeUtils.importESModule(
+    "resource:///modules/AttachmentInfo.sys.mjs"
+  ).AttachmentInfo;
+  ModuleOriginalOpener = ModuleAttachmentInfo.prototype.open;
+} catch (e) {
+}
+
 function log(msg){
   Services.console.logStringMessage(msg);
 }
@@ -22,6 +34,33 @@ var AttachmentHandler = class extends ExtensionCommon.ExtensionAPI {
                 function callback(attachment){
                     return fire.async(attachment);
                 }
+
+                // If AttachmentInfo is in the system module, override the
+                // open method here.
+                if (ModuleAttachmentInfo) {
+                  ModuleAttachmentInfo.prototype.open = async function(browsingContext) {
+                    callback({
+                      contentType : this.contentType,
+                      url : this.url,
+                      uri : this.uri,
+                      name : this.name,
+                      displayName : this.displayName
+                    }).then(result => {
+                      if (result) {
+                        // Call original handler
+                        ModuleOriginalOpener.call(this, browsingContext);
+                      } else {
+                        // File blocked. Do nothing
+                      }
+                    });
+                  }
+
+                  return function() {
+                    ModuleAttachmentInfo.prototype.open = ModuleOriginalOpener;
+                  };
+                }
+
+                // Otherwise override the open method for each window.
                 windowListener.add(callback);
                 return function() {
                     windowListener.remove();
