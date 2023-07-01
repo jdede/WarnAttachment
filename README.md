@@ -179,6 +179,7 @@ Starting with version 68.x
 * Thunderbird 89b (US-English)
 * Thunderbird 91 (German)
 * Thunderbird 102 (German)
+* Thunderbird 115 (beta, US-English)
 
 Changelog
 =========

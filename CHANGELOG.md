@@ -1,6 +1,10 @@
 CANGELOG
 =========
 
+2023-07-01, Version 2.10
+------------------------
+
+* Fixed new opener for TB 115, thanks to arai-a
 
 2023-06-30, Version 2.9
 -----------------------
