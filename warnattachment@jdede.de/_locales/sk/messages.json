@@ -1,0 +1,67 @@
+{
+"extensionDescription": {
+"message": "WarnAttachment zobrazuje ďalšie dialógové okno na potvrdenie otvorenia potenciálne nebezpečných príloh. Niektoré prílohy, ako sú spustiteľné súbory atď., sú úplne zablokované. To znižuje riziko škodlivého softvéru, najmä pre neskúsených používateľov."
+},
+"warningTitle" : {
+"message" : "Nezabezpečená prípona súboru"
+},
+"warningText" : {
+"message" : "Tento súbor môže obsahovať škodlivý obsah. Skontrolujte, či je zdroj (odosielateľ) dôveryhodný."
+},
+"warningTextHint" :{
+"message" : "Beriem na vedomie, otvoriť prílohu."
+},
+"blockingTitle" : {
+"message" : "Príloha je zablokovaná"
+},
+"blockingText" : {
+"message" : "Aby sme vás ochránili pred škodlivým softvérom, túto prílohu nemožno na tomto počítači otvoriť."
+},
+"options.warn.title" : {
+"message" : "Prípony súborov ktoré budú hlásiť upozornenie:"
+},
+"options.warn.desc" : {
+"message" : "Pre tieto prípony súborov sa zobrazí dialógové okno pri otvorení s upozornením. Vkladajte prípony odelené čiarkou."
+},
+"options.blocked.title" : {
+"message" : "Prípony súborov ktoré budú zablokované:"
+},
+"options.blocked.desc" : {
+"message" : "Tieto prípony súborov budú úplne zablokované (bez možnosti otvorenia). Vkladajte prípony odelené čiarkou."
+},
+"options.warn.user.title" : {
+"message" : "Používateľom definovaný text pre upozornenie na podozrivé prílohy:"
+},
+"options.warn.user.desc" : {
+"message" : "Ak chcete použiť predvolenú správu, nechajte prázdne."
+},
+"options.blocked.user.title" : {
+"message" : "Používateľom definovaný text pre upozornenie na zablokované prílohy:"
+},
+"options.blocked.user.desc" : {
+"message" : "Ak chcete použiť predvolenú správu, nechajte prázdne."
+},
+"options.title" : {
+"message" : "WarnAttachment Nastavenia"
+},
+"options.info.text.link.github" : {
+"message" : "Naštívte WarnAttachment na githube!"
+},
+"options.info.text.link.license" : {
+"message" : "Zobraziť licenciu online (GNU General Public License v3.0)"
+},
+"options.savesettings":{
+"message" : "Uložiť nastavenia"
+},
+"options.resetsettings":{
+"message" : "Resetovať na predvolené nastavenia"
+},
+"options.notification.resetdone":
+{
+"message" : "Resetovanie hotové"
+},
+"options.notification.savedone" :
+{
+"message" : "Zmeny úspešne uložené"
+}
+}
