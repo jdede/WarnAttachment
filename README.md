@@ -209,6 +209,7 @@ Credits
 * Thanks to Mariusz  (MX\_EH) for contributing the Polish translation.
 * Thanks to Nacho for contributing the Spanish translation
 * Thanks to arai-a for the global services fix
+* Thanks to patrikv14 for the Slovak translation
 
 License
 =======

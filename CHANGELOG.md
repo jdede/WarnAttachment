@@ -1,6 +1,11 @@
 CANGELOG
 =========
 
+2024-06-22, Version 2.12
+------------------------
+
+* Added Slovak translation, thanks to patrikv14
+
 2024-05-02, Version 2.11
 ------------------------
 
