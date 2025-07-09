@@ -1,8 +1,8 @@
 // Experimental API: Allows to register a callback to the attachment opener
 
-var { ExtensionCommon } = ChromeUtils.import("resource://gre/modules/ExtensionCommon.jsm");
-var Services = globalThis.Services || ChromeUtils.import(
-  "resource://gre/modules/Services.jsm"
+var { ExtensionCommon } = ChromeUtils.importESModule("resource://gre/modules/ExtensionCommon.sys.mjs");
+var Services = globalThis.Services || ChromeUtils.importESModule(
+  "resource://gre/modules/Services.sys.mjs"
 ).Services;
 const LISTENER_NAME = "warnattachmentExperimentListener_";
 
@@ -75,7 +75,7 @@ var AttachmentHandler = class extends ExtensionCommon.ExtensionAPI {
 
 
 // (This file had a lowercase E in Thunderbird 65 and earlier.)
-var { ExtensionSupport } = ChromeUtils.import("resource:///modules/ExtensionSupport.jsm");
+var { ExtensionSupport } = ChromeUtils.importESModule("resource:///modules/ExtensionSupport.sys.mjs");
 
 var windowListener = new class extends ExtensionCommon.EventEmitter {
 

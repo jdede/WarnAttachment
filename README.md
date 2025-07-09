@@ -182,6 +182,8 @@ Starting with version 68.x
 * Thunderbird 115 (beta, US-English)
 * Thunderbird 126 (beta, US-English)
 * Thunderbird 128 (German)
+* Thunderbird 140 (German)
+* Thunderbird 141 (beta, US-English)
 
 Changelog
 =========
