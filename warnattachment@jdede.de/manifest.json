@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "WarnAttachment",
-  "version": "2.14",
+  "version": "2.15",
   "description": "__MSG_extensionDescription__",
   "author": "Jens Dede",
   "homepage_url": "https://github.com/jdede/WarnAttachment",

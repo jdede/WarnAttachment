@@ -213,11 +213,12 @@ Credits
 * Thanks to Nacho for contributing the Spanish translation
 * Thanks to arai-a for the global services fix
 * Thanks to patrikv14 for the Slovak translation
+* Thanks to metodi100 for the Bulgarian translation
 
 License
 =======
 
-Jens Dede <warnattachment@jdede.de>, 2023
+Jens Dede <warnattachment@jdede.de>, 2025
 
 This code is licensed under the GPLv3
 
