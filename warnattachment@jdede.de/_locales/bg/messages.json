@@ -63,14 +63,5 @@
   "options.notification.savedone" :
   {
       "message" : "Промените са запазени успешно"
-  },
-  "app.title" : {
-      "message" : "WarnAttachment"
-  },
-  "warningMessageTypes" : {
-      "message" : "DOC,DOCM,PPT,PPTM,XLS,XLSM,PPS,PPSM,ZIP,RAR,7Z,HTML,HTM"
-  },
-  "blockingMessageTypes" : {
-      "message" : "ADE,ADP,BAT,CHM,CMD,COM,CPL,EXE,HTA,INS,ISP,JAR,JS,JSE,LIB,LNK,MDE,MSC,MSI,MSP,MST,NSH,PIF,SCR,SCT,SHB,SYS,VB,VBE,VBS,VXD,WSC,WSF,WSH,INETLOC,ISO,IMG,DIAGCAB"
   }
 }
