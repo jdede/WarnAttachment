@@ -1,0 +1,76 @@
+{
+  "extensionDescription": {
+      "message": "WarnAttachment показва допълнителен диалогов прозорец за потвърждение на отварянето на потенциално опасни прикачени файлове. Някои прикачени файлове като изпълними файлове и др. са напълно блокирани. Това намалява риска от злонамерен софтуер, особено за неопитни потребители."
+  },
+  "warningTitle" : {
+      "message" : "Несигурно файлово разширение"
+  },
+  "warningText" : {
+      "message" : "Този файл може да съдържа злонамерено съдържание. Моля, проверете отново дали източникът е надежден."
+  },
+  "warningTextHint" :{
+      "message" : "Все пак бих искал да отворя този файл."
+  },
+  "blockingTitle" : {
+      "message" : "Прикаченият файл е блокиран"
+  },
+  "blockingText" : {
+      "message" : "За да ви предпазим от зловреден софтуер, този прикачен файл не може да бъде отворен на тази машина."
+  },
+  "options.warn.title" : {
+      "message" : "Разширения на файлове за предупреждение:"
+  },
+  "options.warn.desc" : {
+      "message" : "Ще се покаже предупредителен диалог за тези файлови разширения. Това поле съдържа стойности, разделени със запетая."
+  },
+  "options.blocked.title" : {
+      "message" : "Файлови разширения за блокиране:"
+  },
+  "options.blocked.desc" : {
+      "message" : "Тези файлови разширения ще бъдат напълно блокирани. Това поле съдържа стойности, разделени със запетая."
+  },
+  "options.warn.user.title" : {
+      "message" : "Дефинирано от потребителя съобщение за предупреждение:"
+  },
+  "options.warn.user.desc" : {
+      "message" : "Оставете празно, за да използвате съобщението по подразбиране."
+  },
+  "options.blocked.user.title" : {
+      "message" : "Дефинирано от потребителя съобщение за блокирани прикачени файлове:"
+  },
+  "options.blocked.user.desc" : {
+      "message" : "Оставете празно, за да използвате съобщението по подразбиране."
+  },
+  "options.title" : {
+      "message" : "Настройки за WarnAttachment"
+  },
+  "options.info.text.link.github" : {
+      "message" : "Посетете WarnAttachment в github!"
+  },
+  "options.info.text.link.license" : {
+      "message" : "Показване на лиценз онлайн (GNU General Public License v3.0)"
+  },
+  "options.savesettings":{
+      "message" : "Запазете настройките"
+  },
+  "options.resetsettings":{
+      "message" : "Възстановяване на настройките по подразбиране"
+  },
+  "options.notification.resetdone":
+  {
+      "message" : "Нулирането е успешно"
+  },
+  "options.notification.savedone" :
+  {
+      "message" : "Промените са запазени успешно"
+  },
+  "app.title" : {
+      "message" : "WarnAttachment"
+  },
+  "warningMessageTypes" : {
+      "message" : "DOC,DOCM,PPT,PPTM,XLS,XLSM,PPS,PPSM,ZIP,RAR,7Z,HTML,HTM"
+  },
+  "blockingMessageTypes" : {
+      "message" : "ADE,ADP,BAT,CHM,CMD,COM,CPL,EXE,HTA,INS,ISP,JAR,JS,JSE,LIB,LNK,MDE,MSC,MSI,MSP,MST,NSH,PIF,SCR,SCT,SHB,SYS,VB,VBE,VBS,VXD,WSC,WSF,WSH,INETLOC,ISO,IMG,DIAGCAB"
+  }
+}
