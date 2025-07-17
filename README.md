@@ -24,6 +24,7 @@ accordingly. Currently, two branches exist:
   below.
 * Major version number starting with 1, i.e. 1.1 is for Thunderbird 68.x and
   above.
+* Starting with version 2.14, at least Thunderbird 126.0
 
 I try my best to test all possible combinations. If you find any problems, feel
 free to open an issue or drop me a line.
