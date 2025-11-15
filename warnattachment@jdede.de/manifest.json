@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "WarnAttachment",
-  "version": "2.15",
+  "version": "2.16",
   "description": "__MSG_extensionDescription__",
   "author": "Jens Dede",
   "homepage_url": "https://github.com/jdede/WarnAttachment",
@@ -10,7 +10,7 @@
       "gecko" : {
           "id": "warnattachment@jdede.de",
           "strict_min_version" : "126.0",
-          "strict_max_version": "141.*"
+          "strict_max_version": "145.*"
       }
   },
 

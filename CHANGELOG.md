@@ -1,11 +1,15 @@
 CANGELOG
 =========
 
+2025-11-25, Version 2.16
+------------------------
+
+* Tested new TB version 145
+
 2025-07-17, Version 2.15
 ------------------------
 
 * Added Bulgarian translation, thanks to metodi100
-
 
 2025-07-09, Version 2.14
 ------------------------
