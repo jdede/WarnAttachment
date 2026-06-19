@@ -63,7 +63,7 @@ function showMessage(msg){
     clearTimeout(timeoutTimer);
   }
   let element = document.querySelector("#infobox");
-  element.innerHTML = msg;
+  element.textContent = msg;
   element.style.display = "block";
   timeoutTimer = setTimeout(function() {
     let element = document.querySelector("#infobox");

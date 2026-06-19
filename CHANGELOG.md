@@ -5,6 +5,7 @@ CANGELOG
 ------------------------
 
 * Tested new TB Version 152
+* Minor security fix: correct text assignment
 
 2026-03-03, Version 2.17
 ------------------------
