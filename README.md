@@ -187,6 +187,7 @@ Starting with version 68.x
 * Thunderbird 141 (beta, US-English)
 * Thunderbird 140 (Bulgarian)
 * Thunderbird 148 (German)
+* Thunderbird 152 (German)
 
 Changelog
 =========
@@ -221,7 +222,7 @@ Credits
 License
 =======
 
-Jens Dede <warnattachment@jdede.de>, 2025
+Jens Dede <warnattachment@jdede.de>, 2026
 
 This code is licensed under the GPLv3
 
