@@ -189,6 +189,7 @@ Starting with version 68.x
 * Thunderbird 148 (German)
 * Thunderbird 152 (German)
 * Thunderbird 153 (German)
+* Thunderbird 155B (German)
 
 Changelog
 =========
