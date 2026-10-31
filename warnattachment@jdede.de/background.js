@@ -1,5 +1,5 @@
 // WarnAttachment
-// Jens Dede, 2020
+// Jens Dede, 2026
 
 const warnAttachmentCurrentLegacyMigrationVersion = 2
 
@@ -13,6 +13,25 @@ const warnAttachmentDefaultValues = {
     user_warning_msg: "",
     user_blocked_msg: ""
 }
+
+// Normalize names
+function normalizeName(name) {
+  return name
+    .normalize("NFKC")
+    .replace(/[\u200B-\u200F\u202A-\u202E\u2066-\u2069\uFEFF]/g, "")
+    .trim()
+    .replace(/[.\s]+$/, "")
+    .toLowerCase();
+}
+
+// MIME types that carry no information about the content.
+const NEUTRAL_MIME_TYPES = new Set([
+    "",
+    "application/octet-stream",
+    "application/unknown",
+    "application/x-unknown",
+    "binary/octet-stream"
+]);
 
 // Migrate the preferences from old thunderbird versions (if available)
 async function migratePrefs() {
@@ -42,32 +61,49 @@ async function migratePrefs() {
     console.log("migration done");
 }
 
+// Get MIME Type
+async function getMimeExtensions(contentType) {
+    const type = (contentType || "").split(";")[0].trim().toLowerCase();
+    if (NEUTRAL_MIME_TYPES.has(type)) {
+        return [];
+    }
+    try {
+        const exts = await browser.AttachmentHandler.getExtensionsForType(type);
+        return exts
+            .map(e => e.toLowerCase().replace(/^\.+/, ""))
+            .filter(e => e.length > 0);
+    } catch (e) {
+        console.error("WarnAttachment: MIME lookup failed", e);
+        return [];
+    }
+}
+
 // Callback for the opener
 async function cb(o){
-  // get all the settings
-  let p_blocked = await browser.storage.local.get("blocked");
-  let p_warn = await browser.storage.local.get("warn");
-  let pref = await browser.storage.local.get("preferences");
 
-  let blockedExt = p_blocked.blocked.toLowerCase().replace(/\s+/g, '').split(",");
-  let warnExt = p_warn.warn.toLowerCase().replace(/\s+/g, '').split(",");
+  // get the settings
+  const s = await browser.storage.local.get(warnAttachmentDefaultValues);
 
-  // get the messages, overwrite if user-defined ones are available
-  let p_user_warning = await browser.storage.local.get("user_warning_msg");
-  let p_user_blocking = await browser.storage.local.get("user_blocked_msg");
+  let blockedExt = s.blocked.toLowerCase().replace(/\s+/g, '').split(",");
+  let warnExt = s.warn.toLowerCase().replace(/\s+/g, '').split(",");
 
   let warningMessage = browser.i18n.getMessage("warningText");
-  if (p_user_warning.user_warning_msg != "" && p_user_warning.user_warning_msg !== undefined){
-    warningMessage = p_user_warning.user_warning_msg;
+  if (s.user_warning_msg != "" && s.user_warning_msg !== undefined){
+    warningMessage = s.user_warning_msg;
   }
 
   let blockingMessage = browser.i18n.getMessage("blockingText");
-  if (p_user_blocking.user_blocked_msg != "" && p_user_blocking.user_blocked_msg !== undefined){
-    blockingMessage = p_user_blocking.user_blocked_msg;
+  if (s.user_blocked_msg != "" && s.user_blocked_msg !== undefined){
+    blockingMessage = s.user_blocked_msg;
+  }
+
+  // TODO: Check both, the extension and the extension by MIME Type
+  for (const e of await getMimeExtensions(o.contentType)) {
+    console.log("Extension by MimeType: ", e);
   }
 
   // get the current file extension
-  let attName = o.displayName ? o.displayName : o.name;
+  let attName = normalizeName(o.displayName ? o.displayName : o.name);
   let ext = attName.substring(attName.lastIndexOf(".")).toLowerCase();
 
   // check if a blocked file extension is used
