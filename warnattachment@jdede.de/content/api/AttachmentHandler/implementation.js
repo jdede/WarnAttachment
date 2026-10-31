@@ -66,7 +66,33 @@ var AttachmentHandler = class extends ExtensionCommon.ExtensionAPI {
                     windowListener.remove();
                 };
             },
-        }).api()
+        }).api(),
+        async getExtensionsForType(contentType) {
+        const mimeService = Cc["@mozilla.org/mime;1"].getService(Ci.nsIMIMEService);
+        const result = new Set();
+        let info;
+        try {
+            info = mimeService.getFromTypeAndExtension(contentType, "");
+        } catch (e) {
+            // unknown type
+            return [];
+        }
+        try {
+            if (info.primaryExtension) {
+                result.add(info.primaryExtension);
+            }
+        } catch (e) {
+            // no primary extension known
+        }
+        try {
+            const it = info.getFileExtensions();
+            while (it.hasMore()) {
+                result.add(it.getNext());
+            }
+        } catch (e) {
+        }
+        return [...result];
+        }
       }
     }
   }

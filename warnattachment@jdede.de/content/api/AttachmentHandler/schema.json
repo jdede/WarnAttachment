@@ -18,6 +18,20 @@
                 "description" : "True if allowed"
             }
         }
+    ],
+    "functions": [
+        {
+            "name": "getExtensionsForType",
+            "type": "function",
+            "async": true,
+            "description": "Returns the file extensions the system associates with a MIME type",
+            "parameters": [
+                {
+                    "name": "contentType",
+                    "type": "string"
+                }
+            ]
+        }
     ]
   }
 ]
