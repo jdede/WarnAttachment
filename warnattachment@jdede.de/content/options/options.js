@@ -1,4 +1,4 @@
-// Jens Dede, 2020
+// Jens Dede, 2026
 
 // workaround as browser seems to be broken in here
 const browser = window.browser.extension.getBackgroundPage().browser;
@@ -21,12 +21,13 @@ function saveOptions(e) {
     }
 }
 
-// Get the options from the storage backend and fill the form
-function restoreOptions() {
-  browser.storage.local.get("warn").then(p => {document.querySelector("#warnattachment-warning").value = p.warn;});
-  browser.storage.local.get("blocked").then(p => {document.querySelector("#warnattachment-blocking").value = p.blocked;});
-  browser.storage.local.get("user_warning_msg").then(p => {document.querySelector("#warnattachment-user-warn-message").value = p.user_warning_msg;});
-  browser.storage.local.get("user_blocked_msg").then(p => {document.querySelector("#warnattachment-user-blocked-message").value = p.user_blocked_msg;});
+async function restoreOptions() {
+    const defaults = window.browser.extension.getBackgroundPage().warnAttachmentDefaultValues;
+    const s = await browser.storage.local.get(defaults);
+    document.querySelector("#warnattachment-warning").value = s.warn;
+    document.querySelector("#warnattachment-blocking").value = s.blocked;
+    document.querySelector("#warnattachment-user-warn-message").value = s.user_warning_msg;
+    document.querySelector("#warnattachment-user-blocked-message").value = s.user_blocked_msg;
 }
 
 // Get the translations if available
