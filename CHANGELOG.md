@@ -1,4 +1,4 @@
-CANGELOG
+CHANGELOG
 =========
 
 2026-10-31, Version 2.21
