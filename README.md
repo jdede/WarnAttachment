@@ -64,6 +64,9 @@ A warning message is shown for the following file extensions:
 * ZST
 * ACE
 * ARJ
+* ONE
+* SH
+* URL
 
 These files may contain macro viruses which are nowadays commonly used for
 encryption malware. The user is asked if s/he is really willing to open the
@@ -123,10 +126,8 @@ is [this google mail support page](https://support.google.com/mail/answer/6590):
 * APPX
 * APPXBUNDLE
 * APPINSTALLER
-* ONE
 * XLL
 * REG
-* URL
 * CAB
 * SETTINGCONTENT-MS
 * LIBRARY-MS
@@ -134,9 +135,7 @@ is [this google mail support page](https://support.google.com/mail/answer/6590):
 * IQY
 * SLK
 * ACCDE
-* WSH
 * DESKTOP
-* SH
 * COMMAND
 * APP
 * DMG

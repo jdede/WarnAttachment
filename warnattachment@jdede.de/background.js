@@ -1,7 +1,26 @@
 // WarnAttachment
 // Jens Dede, 2026
 
-const warnAttachmentCurrentLegacyMigrationVersion = 2
+const warnAttachmentCurrentLegacyMigrationVersion = 3
+
+// File types added in version 2.21 (migration step 3)
+const warnAttachmentAddedIn221 = {
+    warn: "DOTM,XLTM,XLAM,POTM,PPAM,SLDM,RTF,SVG,SHTML,XHTML,GZ,TGZ,TAR,XZ,ZST,ACE,ARJ,ONE,SH,URL",
+    blocked: "PS1,PSM1,PS1XML,VHD,VHDX,MSIX,APPX,APPXBUNDLE,APPINSTALLER,XLL,REG,CAB,SETTINGCONTENT-MS,LIBRARY-MS,SEARCH-MS,IQY,SLK,ACCDE,DESKTOP,COMMAND,APP,DMG,PKG"
+}
+
+// Add new extensions to an existing list, keep the user's order and entries
+function mergeExtList(current, additions) {
+    const list = (current || "").split(",").map(e => e.trim()).filter(e => e);
+    const have = new Set(list.map(e => e.toLowerCase()));
+    for (const e of additions.split(",")) {
+        if (!have.has(e.toLowerCase())) {
+            list.push(e);
+            have.add(e.toLowerCase());
+        }
+    }
+    return list.join(",");
+}
 
 // We hijack the translation mechanism to have a single point of truth for the
 // file extensions. Only defined for the default language: English
@@ -16,7 +35,7 @@ const warnAttachmentDefaultValues = {
 
 // Normalize names
 function normalizeName(name) {
-  return name
+  return (name || "")
     .normalize("NFKC")
     .replace(/[\u200B-\u200F\u202A-\u202E\u2066-\u2069\uFEFF]/g, "")
     .trim()
@@ -55,6 +74,11 @@ async function migratePrefs() {
                 prefs[prefName] = warnAttachmentDefaultValues[prefName];
             }
         }
+    }
+     if (currentMigration < 3) {
+        const cur = await browser.storage.local.get(warnAttachmentDefaultValues);
+        prefs.warn = mergeExtList(prefs.warn ?? cur.warn, warnAttachmentAddedIn221.warn);
+        prefs.blocked = mergeExtList(prefs.blocked ?? cur.blocked, warnAttachmentAddedIn221.blocked);
     }
     prefs.migratedLegacy = warnAttachmentCurrentLegacyMigrationVersion;
     await browser.storage.local.set(prefs);
@@ -99,7 +123,7 @@ async function cb(o){
 
   // TODO: Check both, the extension and the extension by MIME Type
   for (const e of await getMimeExtensions(o.contentType)) {
-    console.log("Extension by MimeType: ", e);
+    console.debug("Extension by MimeType: ", e);
   }
 
   // get the current file extension
