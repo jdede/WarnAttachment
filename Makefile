@@ -1,9 +1,11 @@
-all:warnattachment.xpi
+all: check warnattachment.xpi
 
 EXT_DIR = warnattachment@jdede.de
 
-.PHONY: warnattachment.xpi
+.PHONY: warnattachment.xpi check
 
-warnattachment.xpi:
+check:
+	python3 tools/check.py
+
+warnattachment.xpi: check
 	$(MAKE) -C $(EXT_DIR)
-
