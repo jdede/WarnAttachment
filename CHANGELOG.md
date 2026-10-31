@@ -1,6 +1,14 @@
 CANGELOG
 =========
 
+2026-10-31, Version 2.21
+------------------------
+
+* Tested new TB Version 160Beta
+* Normalize names for better protection
+* Read out the MIME type. Right now, not used for blocking / warning messages
+* Extended the extension lists to newest threats
+
 2026-08-24, Version 2.20
 ------------------------
 

@@ -47,6 +47,23 @@ A warning message is shown for the following file extensions:
 * 7z
 * HTM
 * HTML
+* DOTM
+* XLTM
+* XLAM
+* POTM
+* PPAM
+* SLDM
+* RTF
+* SVG
+* SHTML
+* XHTML
+* GZ
+* TGZ
+* TAR
+* XZ
+* ZST
+* ACE
+* ARJ
 
 These files may contain macro viruses which are nowadays commonly used for
 encryption malware. The user is asked if s/he is really willing to open the
@@ -97,6 +114,33 @@ is [this google mail support page](https://support.google.com/mail/answer/6590):
 * IMG
 * ISO
 * DIAGCAB
+* PS1
+* PSM1
+* PS1XML
+* VHD
+* VHDX
+* MSIX
+* APPX
+* APPXBUNDLE
+* APPINSTALLER
+* ONE
+* XLL
+* REG
+* URL
+* CAB
+* SETTINGCONTENT-MS
+* LIBRARY-MS
+* SEARCH-MS
+* IQY
+* SLK
+* ACCDE
+* WSH
+* DESKTOP
+* SH
+* COMMAND
+* APP
+* DMG
+* PKG
 
 **The user can not open attachments with these extensions.**
 
@@ -190,6 +234,7 @@ Starting with version 68.x
 * Thunderbird 152 (German)
 * Thunderbird 153 (German)
 * Thunderbird 155B (German)
+* Thunderbird 160B (German)
 
 Changelog
 =========
