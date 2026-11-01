@@ -73,7 +73,8 @@ A warning message is shown for the following file extensions:
 
 These files may contain macro viruses which are nowadays commonly used for
 encryption malware. The user is asked if s/he is really willing to open the
-file and if it is from a trustworthy source.
+file and if it is from a trustworthy source. The button "Open anyway" is enabled after
+a countdown (default: 3 seconds, can be changed in the settings).
 
 Block Message Extensions
 ------------------------
@@ -166,6 +167,7 @@ Example `policies.json`:
           "warn": "DOC,DOCM,XLS,XLSM,ZIP,RAR,7Z,HTML,HTM",
           "user_warning_msg": "Only open attachments from known senders.",
           "user_blocked_msg": "This attachment is blocked. Please contact the IT department.",
+          "timeout": 5,
           "locked": true
         }
       }
@@ -180,6 +182,7 @@ Example `policies.json`:
 | `warn`             | string  | Comma separated list of file extensions with a warning  |
 | `user_warning_msg` | string  | Text of the warning dialog                              |
 | `user_blocked_msg` | string  | Text of the blocking dialog                             |
+| `timeout`          | number  | Seconds before "Open anyway" can be clicked (0–60, `0` disables the countdown) |
 | `locked`           | boolean | `true`: settings not given in the policy are locked to the default values, so the user can not change anything |
 
 All keys are optional. Without `locked`, settings not given in the policy can

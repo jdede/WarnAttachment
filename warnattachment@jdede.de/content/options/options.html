@@ -33,6 +33,12 @@
           <label for="warnattachment-user-warn-message" i18n-text="options.warn.user.title"></label>
           <input type="text" id="warnattachment-user-warn-message" i18n-placeholder="options.warn.user.desc"/>
         </div>
+
+        <div class="field field-inline">
+          <label for="warnattachment-timeout" i18n-text="options.timeout.title"></label>
+          <input type="number" id="warnattachment-timeout" min="0" max="60" step="1" inputmode="numeric"/>
+          <p class="hint" i18n-text="options.timeout.desc"></p>
+        </div>
       </section>
 
       <!-- Block -->

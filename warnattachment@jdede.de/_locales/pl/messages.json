@@ -8,9 +8,6 @@
   "warningText" : {
       "message" : "Ten plik może zawierać złośliwą zawartość. Sprawdź dokładnie, czy jest przesłany z zaufanego źródła."
   },
-  "warningTextHint" :{
-      "message" : "Mimo wszystko, chcę otworzyć ten plik."
-  },
   "blockingTitle" : {
       "message" : "Załącznik zablokowany"
   },
@@ -66,5 +63,20 @@
   },
   "options.managed" : {
       "message" : "Ustawione przez administratora"
+  },
+  "dialog.cancel" : {
+      "message" : "Anuluj"
+  },
+  "dialog.open" : {
+      "message" : "Otwórz mimo to"
+  },
+  "dialog.ok" : {
+      "message" : "OK"
+  },
+  "options.timeout.title" : {
+      "message" : "Czas oczekiwania przed otwarciem (sekundy):"
+  },
+  "options.timeout.desc" : {
+      "message" : "Po tym czasie (w sekundach) użytkownik może otworzyć załącznik. 0 wyłącza odliczanie."
   }
 }

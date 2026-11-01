@@ -13,11 +13,21 @@ const TAG_EDITORS = [
     { key: "blocked", list: "warnattachment-blocking", box: "block-tags", input: "block-input", count: "block-count" }
 ];
 
-// Text fields for the user defined messages
-const MESSAGE_FIELDS = {
+// Simple input fields: user defined messages and the countdown
+const FIELDS = {
     user_warning_msg: "warnattachment-user-warn-message",
-    user_blocked_msg: "warnattachment-user-blocked-message"
+    user_blocked_msg: "warnattachment-user-blocked-message",
+    timeout: "warnattachment-timeout"
 };
+
+// Read the value of a field in the format it is stored
+function readField(key) {
+    const value = document.getElementById(FIELDS[key]).value;
+    if (key == "timeout") {
+        return window.browser.extension.getBackgroundPage().sanitizeTimeout(value);
+    }
+    return value.trim();
+}
 
 // Settings enforced by the administrator (enterprise policy). They are shown
 // read-only and are never written to the local storage.
@@ -157,8 +167,8 @@ async function saveOptions(e) {
     for (const ed of TAG_EDITORS) {
         prefs[ed.key] = uniqueList(document.getElementById(ed.list).value).join(",");
     }
-    for (const [key, id] of Object.entries(MESSAGE_FIELDS)) {
-        prefs[key] = document.getElementById(id).value.trim();
+    for (const key of Object.keys(FIELDS)) {
+        prefs[key] = readField(key);
     }
     // never store the values enforced by the administrator
     for (const key of managedKeys) {
@@ -181,7 +191,7 @@ async function restoreOptions() {
     for (const ed of TAG_EDITORS) {
         document.getElementById(ed.list).value = s[ed.key];
     }
-    for (const [key, id] of Object.entries(MESSAGE_FIELDS)) {
+    for (const [key, id] of Object.entries(FIELDS)) {
         document.getElementById(id).value = s[key];
     }
     showManaged();
@@ -210,18 +220,23 @@ function showManaged() {
             box.closest(".card").querySelector(".card-head .count").before(managedNote());
         }
     }
-    for (const [key, id] of Object.entries(MESSAGE_FIELDS)) {
+    for (const [key, id] of Object.entries(FIELDS)) {
         const managed = managedKeys.has(key);
         const field = document.getElementById(id);
         field.disabled = managed;
         if (managed) {
-            field.closest(".field").querySelector("label").after(managedNote());
+            const label = field.closest(".field").querySelector("label");
+            if (field.closest(".field-inline")) {
+                label.append(" ", managedNote());    // keep the grid layout
+            } else {
+                label.after(managedNote());
+            }
         }
     }
 
     // nothing left the user could change: hide the buttons
     const allManaged = TAG_EDITORS.every(ed => managedKeys.has(ed.key)) &&
-        Object.keys(MESSAGE_FIELDS).every(k => managedKeys.has(k));
+        Object.keys(FIELDS).every(k => managedKeys.has(k));
     document.querySelectorAll(".actions .btn").forEach(b => { b.hidden = allManaged; });
 }
 
@@ -266,7 +281,7 @@ async function reset(){
             document.getElementById(ed.list).value = defaults[ed.key];
         }
     }
-    for (const [key, id] of Object.entries(MESSAGE_FIELDS)) {
+    for (const [key, id] of Object.entries(FIELDS)) {
         if (!managedKeys.has(key)) {
             document.getElementById(id).value = defaults[key];
         }
@@ -293,5 +308,5 @@ function showMessage(msg){
 document.addEventListener('DOMContentLoaded', startup);
 document.querySelector("form").addEventListener("submit", saveOptions);
 document.querySelector("#warnattachment-reset-button").addEventListener("click", reset);
-document.querySelectorAll("#warnattachment-user-warn-message, #warnattachment-user-blocked-message")
-    .forEach(el => el.addEventListener("input", () => markDirty(true)));
+Object.values(FIELDS)
+    .forEach(id => document.getElementById(id).addEventListener("input", () => markDirty(true)));

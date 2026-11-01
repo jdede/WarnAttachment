@@ -8,9 +8,6 @@
   "warningText" : {
       "message" : "Diese Datei könnte an Ihrem Computer Schaden anrichten. Bitte prüfen Sie nochmals, ob sie aus einer vertrauenswürdigen Quelle stammt."
   },
-  "warningTextHint" :{
-      "message" : "Ich möchte diese Datei trotzdem öffnen"
-  },
   "blockingTitle" : {
       "message" : "Gesperrte Dateiendung"
   },
@@ -66,5 +63,20 @@
   },
   "options.managed" : {
       "message" : "Von Ihrem Administrator festgelegt"
+  },
+  "dialog.cancel" : {
+      "message" : "Abbrechen"
+  },
+  "dialog.open" : {
+      "message" : "Trotzdem öffnen"
+  },
+  "dialog.ok" : {
+      "message" : "OK"
+  },
+  "options.timeout.title" : {
+      "message" : "Wartezeit vor dem Öffnen (Sekunden):"
+  },
+  "options.timeout.desc" : {
+      "message" : "Zeit in Sekunden, nach der der Nutzer die Warnmeldung bestätigen kann. 0 schaltet den Countdown ab."
   }
 }

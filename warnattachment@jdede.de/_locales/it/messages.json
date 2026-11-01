@@ -8,9 +8,6 @@
   "warningText" : {
       "message" : "Questo file potrebbe contenere contenuto malevolo. Si prega di controllare che la sorgente sia fidata."
   },
-  "warningTextHint" :{
-      "message" : "Voglio comunque aprire il file"
-  },
   "blockingTitle" : {
       "message" : "Allegato bloccato"
   },
@@ -66,5 +63,20 @@
   },
   "options.managed" : {
       "message" : "Impostato dal tuo amministratore"
+  },
+  "dialog.cancel" : {
+      "message" : "Annulla"
+  },
+  "dialog.open" : {
+      "message" : "Apri comunque"
+  },
+  "dialog.ok" : {
+      "message" : "OK"
+  },
+  "options.timeout.title" : {
+      "message" : "Tempo di attesa prima dell'apertura (secondi):"
+  },
+  "options.timeout.desc" : {
+      "message" : "Dopo questo tempo in secondi l'utente può aprire un allegato. 0 disattiva il conto alla rovescia."
   }
 }

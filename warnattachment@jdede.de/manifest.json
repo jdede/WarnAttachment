@@ -45,14 +45,6 @@
             "paths" : [["LegacyPrefMigration"]],
             "script" : "content/api/LegacyPrefMigration/implementation.js"
         }
-    },
-    "DialogExperiment":{
-        "schema" : "content/api/DialogExperiment/schema.json",
-        "parent": {
-            "scopes" : ["addon_parent"],
-            "paths" : [["DialogExperiment"]],
-            "script" : "content/api/DialogExperiment/implementation.js"
-        }
     }
   }
 }

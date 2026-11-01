@@ -8,9 +8,6 @@
   "warningText" : {
       "message" : "This file might contain malicious content. Please double-check if the source is trustworthy."
   },
-  "warningTextHint" :{
-      "message" : "I would like to open this file anyhow."
-  },
   "blockingTitle" : {
       "message" : "Attachment blocked"
   },
@@ -66,6 +63,21 @@
   },
   "options.managed" : {
       "message" : "Set by your administrator"
+  },
+  "dialog.cancel" : {
+      "message" : "Cancel"
+  },
+  "dialog.open" : {
+      "message" : "Open anyway"
+  },
+  "dialog.ok" : {
+      "message" : "OK"
+  },
+  "options.timeout.title" : {
+      "message" : "Waiting time before opening (seconds):"
+  },
+  "options.timeout.desc" : {
+      "message" : "After this time in seconds, the user can open an attachment with a warning. 0 disables the countdown."
   },
   "app.title" : {
       "message" : "WarnAttachment"

@@ -274,6 +274,32 @@ input.tag-input.error {
   cursor: default;
   background: var(--bg);
 }
+.field-inline {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  column-gap: 12px;
+}
+.field-inline .hint {
+  grid-column: 1 / -1;
+}
+input[type=number] {
+  width: 5.5em;
+  background: var(--field);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 7px 9px;
+  font: inherit;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+input[type=number]:focus {
+  outline: none;
+  border-color: var(--focus);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--focus) 25%, transparent);
+}
+input[type=number]:disabled,
 input[type=text]:disabled {
   background: var(--bg);
   color: var(--muted);

@@ -8,9 +8,6 @@
   "warningText" : {
       "message" : "Ce fichier peut contenir du contenu malveillant. Veuillez vérifier si la source est digne de confiance."
   },
-  "warningTextHint" :{
-      "message" : "Je veux toujours ouvrir le fichier."
-  },
   "blockingTitle" : {
       "message" : "Pièce jointe bloquée"
   },
@@ -66,5 +63,20 @@
   },
   "options.managed" : {
       "message" : "Défini par votre administrateur"
+  },
+  "dialog.cancel" : {
+      "message" : "Annuler"
+  },
+  "dialog.open" : {
+      "message" : "Ouvrir quand même"
+  },
+  "dialog.ok" : {
+      "message" : "OK"
+  },
+  "options.timeout.title" : {
+      "message" : "Délai avant l’ouverture (secondes) :"
+  },
+  "options.timeout.desc" : {
+      "message" : "Passé ce délai en secondes, l’utilisateur pourra ouvrir la pièce jointe. 0 désactive le compte à rebours."
   }
 }

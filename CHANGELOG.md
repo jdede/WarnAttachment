@@ -6,6 +6,8 @@ CHANGELOG
 
 * New settings dialog
 * Settings can be set and locked centrally via enterprise policy (`policies.json`, "3rdparty")
+* New warning and blocking dialogs: "Open anyway" is enabled after a countdown (configurable, default 3 seconds)
+* Removed the DialogExperiment API
 
 
 2026-10-31, Version 2.21

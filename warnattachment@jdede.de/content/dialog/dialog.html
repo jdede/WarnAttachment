@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>WarnAttachment</title>
+    <link rel="stylesheet" href="dialog.css"/>
+    <script src="dialog.js" defer></script>
+  </head>
+
+  <body>
+    <main id="dialog" role="alertdialog" aria-labelledby="title" aria-describedby="text" hidden>
+      <div class="head">
+        <span class="badge" aria-hidden="true">
+          <svg class="icon-warn" viewBox="0 0 24 24"><path d="M12 3 2 21h20L12 3z"/><path d="M12 10v5M12 18h.01"/></svg>
+          <svg class="icon-block" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/></svg>
+        </span>
+        <h1 id="title"></h1>
+      </div>
+
+      <p id="filename"></p>
+      <p id="text"></p>
+
+      <div class="actions">
+        <button type="button" class="btn btn-ghost" id="cancel"></button>
+        <button type="button" class="btn btn-primary" id="open"></button>
+      </div>
+    </main>
+  </body>
+</html>

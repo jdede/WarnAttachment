@@ -8,9 +8,6 @@
 "warningText" : {
 "message" : "Tento súbor môže obsahovať škodlivý obsah. Skontrolujte, či je zdroj (odosielateľ) dôveryhodný."
 },
-"warningTextHint" :{
-"message" : "Beriem na vedomie, otvoriť prílohu."
-},
 "blockingTitle" : {
 "message" : "Príloha je zablokovaná"
 },
@@ -66,5 +63,20 @@
 },
 "options.managed" : {
 "message" : "Nastavené vaším správcom"
+},
+"dialog.cancel" : {
+"message" : "Zrušiť"
+},
+"dialog.open" : {
+"message" : "Napriek tomu otvoriť"
+},
+"dialog.ok" : {
+"message" : "OK"
+},
+"options.timeout.title" : {
+"message" : "Čakacia doba pred otvorením (sekundy):"
+},
+"options.timeout.desc" : {
+"message" : "Po uplynutí tohto času v sekundách môže používateľ otvoriť prílohu. 0 vypne odpočítavanie."
 }
 }

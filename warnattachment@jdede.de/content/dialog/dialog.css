@@ -1,0 +1,153 @@
+/* WarnAttachment warning / blocking dialog */
+
+:root {
+  color-scheme: light dark;
+
+  --bg:        #ffffff;
+  --surface:   #f6f7f9;
+  --border:    #dfe2e7;
+  --text:      #1c1f24;
+  --muted:     #646b76;
+  --focus:     #0a84ff;
+
+  --warn:      #b8860b;
+  --warn-bg:   #fff6db;
+  --block:     #c5221f;
+  --block-bg:  #fde8e7;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:        #2b2a33;
+    --surface:   #1c1b22;
+    --border:    #45444f;
+    --text:      #fbfbfe;
+    --muted:     #b0afba;
+    --focus:     #00ddff;
+
+    --warn:      #ffd567;
+    --warn-bg:   #3d3420;
+    --block:     #ff8a80;
+    --block-bg:  #42282b;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 14px/1.45 system-ui, -apple-system, "Segoe UI", Ubuntu, Cantarell, sans-serif;
+}
+
+main {
+  padding: 18px 20px 16px;
+  border-top: 4px solid var(--accent);
+}
+.warn  { --accent: var(--warn);  --accent-bg: var(--warn-bg); }
+.block { --accent: var(--block); --accent-bg: var(--block-bg); }
+
+.head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+h1 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.badge {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 9px;
+  background: var(--accent-bg);
+  flex: none;
+}
+.badge svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.warn .icon-block,
+.block .icon-warn { display: none; }
+
+#filename {
+  margin: 0 0 8px;
+  padding: 6px 10px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font: 600 13px/1.4 ui-monospace, "SF Mono", Menlo, Consolas, "DejaVu Sans Mono", monospace;
+  overflow-wrap: anywhere;
+}
+#filename:empty { display: none; }
+
+#text {
+  margin: 0;
+  white-space: pre-line;
+}
+
+/* Buttons: one line, or centered below each other if there is no space */
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 18px;
+}
+.actions.stacked {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.btn {
+  font: inherit;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 8px 18px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: background .15s, border-color .15s, opacity .15s;
+}
+.btn:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+.btn-ghost {
+  background: var(--surface);
+  color: var(--text);
+  border-color: var(--border);
+}
+.btn-ghost:hover {
+  border-color: var(--muted);
+}
+
+/* "Open anyway" is deliberately not highlighted: the safe choice is cancel */
+.btn-primary {
+  background: transparent;
+  color: var(--accent);
+  border-color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+.btn-primary:hover:not(:disabled) {
+  background: var(--accent-bg);
+}
+.btn:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
+.btn[hidden] { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}

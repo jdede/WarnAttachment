@@ -35,7 +35,25 @@ const warnAttachmentDefaultValues = {
 
 // Settings that can be enforced by an administrator, see README:
 // policies.json -> "3rdparty" -> "Extensions" -> "warnattachment@jdede.de"
-const warnAttachmentManagedKeys = ["warn", "blocked", "user_warning_msg", "user_blocked_msg"];
+// (key -> expected type of the value in the policy)
+const warnAttachmentManagedKeys = {
+    warn: "string",
+    blocked: "string",
+    user_warning_msg: "string",
+    user_blocked_msg: "string",
+    timeout: "number"
+};
+
+// Waiting time (seconds) before "Open anyway" can be clicked
+const WARNATTACHMENT_MAX_TIMEOUT = 60;
+
+function sanitizeTimeout(value) {
+    const t = Math.round(Number(value));
+    if (!Number.isFinite(t)) {
+        return warnAttachmentDefaultValues.timeout;
+    }
+    return Math.min(WARNATTACHMENT_MAX_TIMEOUT, Math.max(0, t));
+}
 
 // Read the settings set by the administrator (enterprise policy).
 // Returns {} if no policy is set for this add-on.
@@ -48,11 +66,11 @@ async function getManagedSettings() {
         return {};
     }
     const result = {};
-    for (const key of warnAttachmentManagedKeys) {
-        if (typeof managed[key] === "string") {
+    for (const [key, type] of Object.entries(warnAttachmentManagedKeys)) {
+        if (typeof managed[key] === type) {
             result[key] = managed[key];
         } else if (key in managed) {
-            console.warn(`WarnAttachment: policy value "${key}" ignored, must be a string`);
+            console.warn(`WarnAttachment: policy value "${key}" ignored, must be a ${type}`);
         }
     }
     if ("locked" in managed && typeof managed.locked !== "boolean") {
@@ -61,7 +79,7 @@ async function getManagedSettings() {
     // "locked": true -> the user can not change any setting. Settings not
     // given in the policy use the default values.
     if (managed.locked === true) {
-        for (const key of warnAttachmentManagedKeys) {
+        for (const key of Object.keys(warnAttachmentManagedKeys)) {
             if (!(key in result)) {
                 result[key] = warnAttachmentDefaultValues[key];
             }
@@ -75,11 +93,111 @@ async function getManagedSettings() {
 async function getSettings() {
     const local = await browser.storage.local.get(warnAttachmentDefaultValues);
     const managed = await getManagedSettings();
+    const settings = Object.assign({}, local, managed);
+    settings.timeout = sanitizeTimeout(settings.timeout);
     return {
-        settings: Object.assign({}, local, managed),
+        settings: settings,
         managedKeys: Object.keys(managed)
     };
 }
+
+// ---------------------------------------------------------------------------
+// Dialogs (popup window, see content/dialog/)
+// ---------------------------------------------------------------------------
+
+const DIALOG_WIDTH = 480;
+const DIALOG_HEIGHT = 260;    // adjusted to the content by the dialog itself
+
+// Open dialogs: id -> {data, resolve, windowId, notBefore}
+const openDialogs = new Map();
+let dialogCounter = 0;
+
+// Show a dialog and wait for the decision of the user.
+// kind: "warn" (returns true if the user wants to open the attachment) or
+//       "block" (always returns false)
+async function showDialog(kind, title, text, filename, timeout) {
+    const id = String(++dialogCounter);
+    const data = { kind, title, text, filename, timeout: kind == "warn" ? timeout : 0 };
+
+    const result = new Promise(resolve => {
+        openDialogs.set(id, {
+            data,
+            resolve,
+            windowId: null,
+            // "Open anyway" is not accepted before the countdown is over
+            notBefore: Date.now() + data.timeout * 1000 - 250
+        });
+    });
+
+    // center the dialog above the current Thunderbird window
+    const options = {
+        url: browser.runtime.getURL("content/dialog/dialog.html") + "?id=" + id,
+        type: "popup",
+        width: DIALOG_WIDTH,
+        height: DIALOG_HEIGHT,
+        allowScriptsToClose: true
+    };
+    try {
+        const parent = await browser.windows.getLastFocused();
+        options.left = Math.round(parent.left + (parent.width - DIALOG_WIDTH) / 2);
+        options.top = Math.round(parent.top + (parent.height - DIALOG_HEIGHT) / 3);
+    } catch (e) {
+        // no position: the window manager decides
+    }
+
+    try {
+        const win = await browser.windows.create(options);
+        const entry = openDialogs.get(id);
+        if (entry) {
+            entry.windowId = win.id;
+        }
+    } catch (e) {
+        // Without dialog we can not ask: do not open the attachment
+        console.error("WarnAttachment: could not open the dialog", e);
+        finishDialog(id, false);
+    }
+    return result;
+}
+
+function finishDialog(id, open) {
+    const entry = openDialogs.get(id);
+    if (!entry) {
+        return;
+    }
+    openDialogs.delete(id);
+    if (open && Date.now() < entry.notBefore) {
+        console.warn("WarnAttachment: dialog answered before the countdown was over");
+        open = false;
+    }
+    entry.resolve(entry.data.kind == "warn" && open === true);
+    if (entry.windowId !== null) {
+        browser.windows.remove(entry.windowId).catch(() => {});
+    }
+}
+
+browser.runtime.onMessage.addListener((message, sender) => {
+    if (!message || typeof message.id !== "string") {
+        return;
+    }
+    if (message.type == "warnattachment-dialog-init") {
+        const entry = openDialogs.get(message.id);
+        return Promise.resolve(entry ? entry.data : null);
+    }
+    if (message.type == "warnattachment-dialog-result") {
+        finishDialog(message.id, message.open === true);
+        return Promise.resolve(true);
+    }
+});
+
+// Closing the window (title bar, Alt+F4, ...) means "cancel"
+browser.windows.onRemoved.addListener(windowId => {
+    for (const [id, entry] of openDialogs) {
+        if (entry.windowId === windowId) {
+            entry.windowId = null;
+            finishDialog(id, false);
+        }
+    }
+});
 
 // Normalize names
 function normalizeName(name) {
@@ -175,17 +293,16 @@ async function cb(o){
   }
 
   // get the current file extension
-  let attName = normalizeName(o.displayName ? o.displayName : o.name);
+  const displayName = o.displayName ? o.displayName : o.name;
+  let attName = normalizeName(displayName);
   let ext = attName.substring(attName.lastIndexOf(".")).toLowerCase();
 
   // check if a blocked file extension is used
   for (const p of blockedExt) {
       if ("."+p.toLowerCase() == ext.toLowerCase()){
-          // blocked -> show message
-          browser.DialogExperiment.getBlockingDialog(
-              browser.i18n.getMessage("blockingTitle"),
-              blockingMessage
-          );
+          // blocked -> show message (no need to wait for it)
+          showDialog("block", browser.i18n.getMessage("blockingTitle"),
+              blockingMessage, displayName, 0).catch(console.error);
           return false;
       }
   }
@@ -193,12 +310,9 @@ async function cb(o){
   // check for warn extension
   for (const p of warnExt) {
       if ("."+p.toLowerCase() == ext.toLowerCase()){
-          // show warning and open file if user marked the checkbox
-          return browser.DialogExperiment.getWarningDialog(
-              browser.i18n.getMessage("warningTitle"),
-              warningMessage,
-              browser.i18n.getMessage("warningTextHint")
-          );
+          // show warning, open the file only if the user confirms
+          return showDialog("warn", browser.i18n.getMessage("warningTitle"),
+              warningMessage, displayName, s.timeout);
       }
   }
 
