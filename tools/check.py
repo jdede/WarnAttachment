@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Consistency checks for WarnAttachment. Run from the repository root."""
+"""Consistency checks for WarnAttachment. Run from the repository root.
+
+Errors make the script fail (exit code 1). Warnings (e.g. missing
+translations) are only reported, unless --strict is given.
+"""
 
 import json
 import re
@@ -9,19 +13,33 @@ import sys
 from pathlib import Path
 
 EXT_DIR = Path("warnattachment@jdede.de")
-MESSAGES = EXT_DIR / "_locales" / "en" / "messages.json"
+LOCALES_DIR = EXT_DIR / "_locales"
+MESSAGES = LOCALES_DIR / "en" / "messages.json"
 README = Path("README.md")
 CHANGELOG = Path("CHANGELOG.md")
 BACKGROUND = EXT_DIR / "background.js"
 MANIFEST = EXT_DIR / "manifest.json"
 
+# Messages that are the same for all languages and are only defined in the
+# default locale (the extension lists are the single point of truth there)
+LANGUAGE_INDEPENDENT = {"warningMessageTypes", "blockingMessageTypes", "app.title"}
+
+PLACEHOLDER_RE = re.compile(r"\$[A-Za-z0-9_@]+\$|\$\d")
+
 ENTRY_RE = re.compile(r"^[A-Z0-9-]+$")
+STRICT = "--strict" in sys.argv[1:]
 errors = []
+warnings = []
 
 
 def error(msg):
     errors.append(msg)
     print("ERROR:", msg)
+
+
+def warning(msg):
+    warnings.append(msg)
+    print("WARNING:", msg)
 
 
 def load_json(path):
@@ -96,7 +114,58 @@ version = manifest.get("version", "")
 if f"Version {version}" not in CHANGELOG.read_text(encoding="utf-8"):
     error(f"CHANGELOG: no entry for version {version}")
 
-# 6) JavaScript syntax (only if node is installed)
+# 6) Translations: every locale must contain all messages of the default
+#    locale (except the language independent ones)
+default_locale = manifest.get("default_locale", "en")
+reference_file = LOCALES_DIR / default_locale / "messages.json"
+reference = load_json(reference_file) if reference_file.exists() else None
+if reference is None:
+    error(f"default locale {default_locale!r}: {reference_file} missing")
+    reference = {}
+
+
+def check_entries(locale, data):
+    """Every entry needs a non-empty "message" string."""
+    for key, entry in data.items():
+        if not isinstance(entry, dict) or not isinstance(entry.get("message"), str):
+            error(f"locale {locale}: {key!r} has no \"message\" string")
+        elif not entry["message"].strip():
+            warning(f"locale {locale}: {key!r} is empty")
+
+
+check_entries(default_locale, reference)
+expected = set(reference) - LANGUAGE_INDEPENDENT
+
+for locale_dir in sorted(p for p in LOCALES_DIR.iterdir() if p.is_dir()):
+    locale = locale_dir.name
+    if locale == default_locale:
+        continue
+    path = locale_dir / "messages.json"
+    if not path.exists():
+        error(f"locale {locale}: {path} missing")
+        continue
+    data = load_json(path)
+    if not isinstance(data, dict):
+        continue
+
+    check_entries(locale, data)
+
+    if missing := sorted(expected - set(data)):
+        warning(f"locale {locale}: {len(missing)} translation(s) missing: {', '.join(missing)}")
+    if unknown := sorted(set(data) - set(reference)):
+        warning(f"locale {locale}: unknown / obsolete key(s): {', '.join(unknown)}")
+    if overrides := sorted((set(data) & LANGUAGE_INDEPENDENT) - {"app.title"}):
+        error(f"locale {locale}: must not define {', '.join(overrides)} "
+              f"(only allowed in {default_locale})")
+
+    # placeholders like $1 or $NAME$ must be kept in the translation
+    for key in sorted(expected & set(data)):
+        ref_msg = reference[key].get("message", "") if isinstance(reference[key], dict) else ""
+        msg = data[key].get("message", "") if isinstance(data[key], dict) else ""
+        if sorted(PLACEHOLDER_RE.findall(ref_msg)) != sorted(PLACEHOLDER_RE.findall(msg)):
+            warning(f"locale {locale}: {key!r} placeholders differ from {default_locale}")
+
+# 7) JavaScript syntax (only if node is installed)
 if shutil.which("node"):
     for path in sorted(EXT_DIR.rglob("*.js")):
         r = subprocess.run(["node", "--check", str(path)], capture_output=True, text=True)
@@ -105,7 +174,14 @@ if shutil.which("node"):
 else:
     print("note: node not found, skipping JavaScript syntax check")
 
+if warnings or errors:
+    print()
+if warnings:
+    print(f"{len(warnings)} warning(s)")
 if errors:
-    print(f"\n{len(errors)} problem(s) found")
+    print(f"{len(errors)} error(s) found")
     sys.exit(1)
-print("All checks passed")
+if warnings and STRICT:
+    print("Failed because of warnings (--strict)")
+    sys.exit(1)
+print("All checks passed" + (" (with warnings)" if warnings else ""))
