@@ -73,6 +73,12 @@
   "dialog.ok" : {
       "message" : "OK"
   },
+  "dialog.from" : {
+      "message" : "Von:"
+  },
+  "dialog.subject" : {
+      "message" : "Betreff:"
+  },
   "options.timeout.title" : {
       "message" : "Wartezeit vor dem Öffnen (Sekunden):"
   },

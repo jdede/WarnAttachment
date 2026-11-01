@@ -7,6 +7,7 @@ CHANGELOG
 * New settings dialog
 * Settings can be set and locked centrally via enterprise policy (`policies.json`, "3rdparty")
 * New warning and blocking dialogs: "Open anyway" is enabled after a countdown (configurable, default 3 seconds)
+* The dialogs show sender and subject of the message and stay in front of the Thunderbird windows
 * Removed the DialogExperiment API
 
 

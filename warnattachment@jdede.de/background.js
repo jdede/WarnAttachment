@@ -115,9 +115,16 @@ let dialogCounter = 0;
 // Show a dialog and wait for the decision of the user.
 // kind: "warn" (returns true if the user wants to open the attachment) or
 //       "block" (always returns false)
-async function showDialog(kind, title, text, filename, timeout) {
+// attachment: {filename, author, subject} shown in the dialog
+async function showDialog(kind, title, text, attachment, timeout) {
     const id = String(++dialogCounter);
-    const data = { kind, title, text, filename, timeout: kind == "warn" ? timeout : 0 };
+    const data = {
+        kind, title, text,
+        filename: attachment.filename || "",
+        author: attachment.author || "",
+        subject: attachment.subject || "",
+        timeout: kind == "warn" ? timeout : 0
+    };
 
     const result = new Promise(resolve => {
         openDialogs.set(id, {
@@ -196,6 +203,26 @@ browser.windows.onRemoved.addListener(windowId => {
             entry.windowId = null;
             finishDialog(id, false);
         }
+    }
+});
+
+// Keep open dialogs in front of the Thunderbird windows, similar to a modal
+// dialog. Switching to another application is not prevented.
+browser.windows.onFocusChanged.addListener(async focusedId => {
+    if (focusedId === browser.windows.WINDOW_ID_NONE) {
+        return;     // focus went to another application: leave it there
+    }
+    const dialogWindows = [...openDialogs.values()]
+        .map(entry => entry.windowId)
+        .filter(id => id !== null);
+    if (dialogWindows.length == 0 || dialogWindows.includes(focusedId)) {
+        return;     // no dialog open, or a dialog got the focus
+    }
+    // bring the newest dialog back to the front
+    try {
+        await browser.windows.update(dialogWindows[dialogWindows.length - 1], { focused: true });
+    } catch (e) {
+        // the dialog was closed in the meantime
     }
 });
 
@@ -295,6 +322,8 @@ async function cb(o){
   // get the current file extension
   const displayName = o.displayName ? o.displayName : o.name;
   let attName = normalizeName(displayName);
+  // shown in the dialog, so the user can judge the source
+  const attachment = { filename: displayName, author: o.author, subject: o.subject };
   let ext = attName.substring(attName.lastIndexOf(".")).toLowerCase();
 
   // check if a blocked file extension is used
@@ -302,7 +331,7 @@ async function cb(o){
       if ("."+p.toLowerCase() == ext.toLowerCase()){
           // blocked -> show message (no need to wait for it)
           showDialog("block", browser.i18n.getMessage("blockingTitle"),
-              blockingMessage, displayName, 0).catch(console.error);
+              blockingMessage, attachment, 0).catch(console.error);
           return false;
       }
   }
@@ -312,7 +341,7 @@ async function cb(o){
       if ("."+p.toLowerCase() == ext.toLowerCase()){
           // show warning, open the file only if the user confirms
           return showDialog("warn", browser.i18n.getMessage("warningTitle"),
-              warningMessage, displayName, s.timeout);
+              warningMessage, attachment, s.timeout);
       }
   }
 

@@ -73,6 +73,12 @@
   "dialog.ok" : {
       "message" : "OK"
   },
+  "dialog.from" : {
+      "message" : "От:"
+  },
+  "dialog.subject" : {
+      "message" : "Тема:"
+  },
   "options.timeout.title" : {
       "message" : "Време за изчакване преди отваряне (секунди):"
   },

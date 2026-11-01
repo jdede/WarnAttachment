@@ -81,6 +81,24 @@ h1 {
 .warn .icon-block,
 .block .icon-warn { display: none; }
 
+/* Sender and subject of the message: the user should judge the source */
+#source {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2px 10px;
+  margin: 0 0 8px;
+  font-size: 13px;
+}
+#source dt {
+  color: var(--muted);
+}
+#source dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+#source[hidden],
+#source [hidden] { display: none; }
+
 #filename {
   margin: 0 0 8px;
   padding: 6px 10px;

@@ -85,6 +85,17 @@ async function startup() {
     document.title = data.title;
     document.getElementById("title").textContent = data.title;
     document.getElementById("filename").textContent = data.filename || "";
+
+    // sender and subject, rows without a value are hidden
+    for (const key of ["author", "subject"]) {
+        const value = data[key] || "";
+        const label = document.getElementById(key + "-label");
+        const field = document.getElementById(key);
+        label.textContent = msg(key == "author" ? "dialog.from" : "dialog.subject");
+        field.textContent = value;
+        label.hidden = field.hidden = (value == "");
+    }
+    document.getElementById("source").hidden = !(data.author || data.subject);
     document.getElementById("text").textContent = data.text;
 
     if (data.kind == "warn") {
