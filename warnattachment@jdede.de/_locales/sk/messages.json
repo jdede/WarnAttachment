@@ -63,5 +63,8 @@
 "options.notification.savedone" :
 {
 "message" : "Zmeny úspešne uložené"
+},
+"options.managed" : {
+"message" : "Nastavené vaším správcom"
 }
 }

@@ -63,5 +63,8 @@
   "options.notification.savedone" :
   {
       "message" : "modifiche salvate"
+  },
+  "options.managed" : {
+      "message" : "Impostato dal tuo amministratore"
   }
 }

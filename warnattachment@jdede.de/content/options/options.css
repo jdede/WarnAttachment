@@ -91,14 +91,16 @@ form {
 
 .card-head {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 10px;
+  gap: 8px 10px;
   margin-bottom: 10px;
 }
 .card-head label {
   font-weight: 600;
   font-size: 15px;
-  flex: 1;
+  flex: 1 1 12em;
+  min-width: 0;
 }
 
 .badge {
@@ -167,7 +169,8 @@ input[type=text]:focus {
   border-top: 1px dashed var(--border);
 }
 .field label {
-  display: block;
+  display: inline-block;
+  margin-right: 8px;
   font-weight: 500;
   margin-bottom: 6px;
 }
@@ -239,6 +242,42 @@ input.tag-input.error {
 @keyframes shake {
   25% { transform: translateX(-3px); }
   75% { transform: translateX(3px); }
+}
+
+/* Settings enforced by the administrator */
+.managed-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 2px 9px 2px 7px;
+  max-width: 100%;
+}
+.managed-note svg {
+  width: 12px;
+  height: 12px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.field .managed-note {
+  margin-bottom: 6px;
+}
+.tags.readonly {
+  cursor: default;
+  background: var(--bg);
+}
+input[type=text]:disabled {
+  background: var(--bg);
+  color: var(--muted);
+  cursor: not-allowed;
 }
 
 /* Buttons */

@@ -63,5 +63,8 @@
   "options.notification.savedone" :
   {
       "message" : "Änderungen gespeichert"
+  },
+  "options.managed" : {
+      "message" : "Von Ihrem Administrator festgelegt"
   }
 }

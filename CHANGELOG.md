@@ -5,6 +5,7 @@ CHANGELOG
 ------------------------
 
 * New settings dialog
+* Settings can be set and locked centrally via enterprise policy (`policies.json`, "3rdparty")
 
 
 2026-10-31, Version 2.21

@@ -9,9 +9,19 @@ const ENTRY_RE = /^[A-Z0-9-]+$/;
 // The hidden textareas keep the lists as "A,B,C". The tag editors are only a
 // different view on these values.
 const TAG_EDITORS = [
-    { list: "warnattachment-warning",  box: "warn-tags",  input: "warn-input",  count: "warn-count" },
-    { list: "warnattachment-blocking", box: "block-tags", input: "block-input", count: "block-count" }
+    { key: "warn",    list: "warnattachment-warning",  box: "warn-tags",  input: "warn-input",  count: "warn-count" },
+    { key: "blocked", list: "warnattachment-blocking", box: "block-tags", input: "block-input", count: "block-count" }
 ];
+
+// Text fields for the user defined messages
+const MESSAGE_FIELDS = {
+    user_warning_msg: "warnattachment-user-warn-message",
+    user_blocked_msg: "warnattachment-user-blocked-message"
+};
+
+// Settings enforced by the administrator (enterprise policy). They are shown
+// read-only and are never written to the local storage.
+const managedKeys = new Set();
 
 // Split a list typed or pasted by the user: commas, semicolons, spaces and
 // new lines are separators, leading dots are removed
@@ -33,11 +43,15 @@ function renderTags(ed) {
     const box = document.getElementById(ed.box);
     const input = document.getElementById(ed.input);
     const entries = uniqueList(list.value);
+    const readonly = managedKeys.has(ed.key);
 
     const tags = entries.map(ext => {
         const tag = document.createElement("span");
         tag.className = "tag";
         tag.textContent = ext;
+        if (readonly) {
+            return tag;
+        }
 
         const remove = document.createElement("button");
         remove.type = "button";
@@ -53,6 +67,7 @@ function renderTags(ed) {
         return tag;
     });
 
+    input.hidden = readonly;
     box.replaceChildren(...tags, input);
     document.getElementById(ed.count).textContent = entries.length;
 }
@@ -66,6 +81,9 @@ function setEntries(ed, entries) {
 // Add everything typed into the input field (plus optional pasted text).
 // Invalid entries stay in the field and are highlighted.
 function commitInput(ed, extra = "") {
+    if (managedKeys.has(ed.key)) {
+        return;
+    }
     const input = document.getElementById(ed.input);
     const added = splitList(input.value + " " + extra);
     if (added.length == 0) {
@@ -135,11 +153,16 @@ async function saveOptions(e) {
     // take over anything still typed into the tag inputs
     TAG_EDITORS.forEach(ed => commitInput(ed));
 
-    const prefs = {
-        warn : uniqueList(document.querySelector("#warnattachment-warning").value).join(","),
-        blocked : uniqueList(document.querySelector("#warnattachment-blocking").value).join(","),
-        user_warning_msg : document.querySelector("#warnattachment-user-warn-message").value.trim(),
-        user_blocked_msg : document.querySelector("#warnattachment-user-blocked-message").value.trim()
+    const prefs = {};
+    for (const ed of TAG_EDITORS) {
+        prefs[ed.key] = uniqueList(document.getElementById(ed.list).value).join(",");
+    }
+    for (const [key, id] of Object.entries(MESSAGE_FIELDS)) {
+        prefs[key] = document.getElementById(id).value.trim();
+    }
+    // never store the values enforced by the administrator
+    for (const key of managedKeys) {
+        delete prefs[key];
     }
     await browser.storage.local.set(prefs);
     markDirty(false);
@@ -150,14 +173,56 @@ async function saveOptions(e) {
 }
 
 async function restoreOptions() {
-    const defaults = window.browser.extension.getBackgroundPage().warnAttachmentDefaultValues;
-    const s = await browser.storage.local.get(defaults);
-    document.querySelector("#warnattachment-warning").value = s.warn;
-    document.querySelector("#warnattachment-blocking").value = s.blocked;
-    document.querySelector("#warnattachment-user-warn-message").value = s.user_warning_msg;
-    document.querySelector("#warnattachment-user-blocked-message").value = s.user_blocked_msg;
+    const result = await window.browser.extension.getBackgroundPage().getSettings();
+    const s = result.settings;
+    managedKeys.clear();
+    result.managedKeys.forEach(k => managedKeys.add(k));
+
+    for (const ed of TAG_EDITORS) {
+        document.getElementById(ed.list).value = s[ed.key];
+    }
+    for (const [key, id] of Object.entries(MESSAGE_FIELDS)) {
+        document.getElementById(id).value = s[key];
+    }
+    showManaged();
     renderAllTags();
     markDirty(false);
+}
+
+// Small "set by your administrator" note with a lock icon
+function managedNote() {
+    const note = document.createElement("span");
+    note.className = "managed-note";
+    note.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>';
+    note.append(browser.i18n.getMessage("options.managed"));
+    return note;
+}
+
+// Mark the settings enforced by the administrator as read-only
+function showManaged() {
+    document.querySelectorAll(".managed-note").forEach(n => n.remove());
+
+    for (const ed of TAG_EDITORS) {
+        const managed = managedKeys.has(ed.key);
+        const box = document.getElementById(ed.box);
+        box.classList.toggle("readonly", managed);
+        if (managed) {
+            box.closest(".card").querySelector(".card-head .count").before(managedNote());
+        }
+    }
+    for (const [key, id] of Object.entries(MESSAGE_FIELDS)) {
+        const managed = managedKeys.has(key);
+        const field = document.getElementById(id);
+        field.disabled = managed;
+        if (managed) {
+            field.closest(".field").querySelector("label").after(managedNote());
+        }
+    }
+
+    // nothing left the user could change: hide the buttons
+    const allManaged = TAG_EDITORS.every(ed => managedKeys.has(ed.key)) &&
+        Object.keys(MESSAGE_FIELDS).every(k => managedKeys.has(k));
+    document.querySelectorAll(".actions .btn").forEach(b => { b.hidden = allManaged; });
 }
 
 // Get the translations if available
@@ -193,11 +258,19 @@ function startup() {
 }
 
 async function reset(){
-    document.querySelector("#warnattachment-warning").value = browser.i18n.getMessage("warningMessageTypes");
-    document.querySelector("#warnattachment-blocking").value = browser.i18n.getMessage("blockingMessageTypes");
-    document.querySelector("#warnattachment-user-warn-message").value = "";
-    document.querySelector("#warnattachment-user-blocked-message").value = "";
-    TAG_EDITORS.forEach(ed => { document.getElementById(ed.input).value = ""; });
+    // only reset the settings the user is allowed to change
+    const defaults = window.browser.extension.getBackgroundPage().warnAttachmentDefaultValues;
+    for (const ed of TAG_EDITORS) {
+        document.getElementById(ed.input).value = "";
+        if (!managedKeys.has(ed.key)) {
+            document.getElementById(ed.list).value = defaults[ed.key];
+        }
+    }
+    for (const [key, id] of Object.entries(MESSAGE_FIELDS)) {
+        if (!managedKeys.has(key)) {
+            document.getElementById(id).value = defaults[key];
+        }
+    }
     renderAllTags();
     await saveOptions();
     showMessage(browser.i18n.getMessage("options.notification.resetdone"));

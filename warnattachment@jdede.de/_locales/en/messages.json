@@ -64,6 +64,9 @@
   {
       "message" : "Changes successfully saved"
   },
+  "options.managed" : {
+      "message" : "Set by your administrator"
+  },
   "app.title" : {
       "message" : "WarnAttachment"
   },

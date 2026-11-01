@@ -63,5 +63,8 @@
   "options.notification.savedone" :
   {
       "message" : "Промените са запазени успешно"
+  },
+  "options.managed" : {
+      "message" : "Зададено от вашия администратор"
   }
 }

@@ -63,5 +63,8 @@
   "options.notification.savedone" :
   {
       "message" : "Cambios guardados con éxito"
+  },
+  "options.managed" : {
+      "message" : "Establecido por su administrador"
   }
 }

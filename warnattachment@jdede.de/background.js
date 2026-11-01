@@ -33,6 +33,54 @@ const warnAttachmentDefaultValues = {
     user_blocked_msg: ""
 }
 
+// Settings that can be enforced by an administrator, see README:
+// policies.json -> "3rdparty" -> "Extensions" -> "warnattachment@jdede.de"
+const warnAttachmentManagedKeys = ["warn", "blocked", "user_warning_msg", "user_blocked_msg"];
+
+// Read the settings set by the administrator (enterprise policy).
+// Returns {} if no policy is set for this add-on.
+async function getManagedSettings() {
+    let managed;
+    try {
+        managed = await browser.storage.managed.get();
+    } catch (e) {
+        // No policy for this add-on (the normal case for private users)
+        return {};
+    }
+    const result = {};
+    for (const key of warnAttachmentManagedKeys) {
+        if (typeof managed[key] === "string") {
+            result[key] = managed[key];
+        } else if (key in managed) {
+            console.warn(`WarnAttachment: policy value "${key}" ignored, must be a string`);
+        }
+    }
+    if ("locked" in managed && typeof managed.locked !== "boolean") {
+        console.warn('WarnAttachment: policy value "locked" ignored, must be true or false');
+    }
+    // "locked": true -> the user can not change any setting. Settings not
+    // given in the policy use the default values.
+    if (managed.locked === true) {
+        for (const key of warnAttachmentManagedKeys) {
+            if (!(key in result)) {
+                result[key] = warnAttachmentDefaultValues[key];
+            }
+        }
+    }
+    return result;
+}
+
+// Get the active settings: defaults < user settings < policy.
+// Also used by the options page (via getBackgroundPage()).
+async function getSettings() {
+    const local = await browser.storage.local.get(warnAttachmentDefaultValues);
+    const managed = await getManagedSettings();
+    return {
+        settings: Object.assign({}, local, managed),
+        managedKeys: Object.keys(managed)
+    };
+}
+
 // Normalize names
 function normalizeName(name) {
   return (name || "")
@@ -105,8 +153,8 @@ async function getMimeExtensions(contentType) {
 // Callback for the opener
 async function cb(o){
 
-  // get the settings
-  const s = await browser.storage.local.get(warnAttachmentDefaultValues);
+  // get the settings (including the ones enforced by a policy)
+  const s = (await getSettings()).settings;
 
   let blockedExt = s.blocked.toLowerCase().replace(/\s+/g, '').split(",");
   let warnExt = s.warn.toLowerCase().replace(/\s+/g, '').split(",");
