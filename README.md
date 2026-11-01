@@ -146,6 +146,45 @@ is [this google mail support page](https://support.google.com/mail/answer/6590):
 
 **The user can not open attachments with these extensions.**
 
+Central configuration (enterprise policies)
+-------------------------------------------
+
+Administrators can set and lock the settings for all users with the
+Thunderbird enterprise policy `3rdparty` (`policies.json`, Windows group
+policies or similar). Settings set by a policy can not be changed by the user;
+they are shown read-only in the settings dialog.
+
+Example `policies.json`:
+
+```json
+{
+  "policies": {
+    "3rdparty": {
+      "Extensions": {
+        "warnattachment@jdede.de": {
+          "blocked": "EXE,BAT,CMD,COM,JS,VBS,PS1,MSI,LNK,ISO,IMG",
+          "warn": "DOC,DOCM,XLS,XLSM,ZIP,RAR,7Z,HTML,HTM",
+          "user_warning_msg": "Only open attachments from known senders.",
+          "user_blocked_msg": "This attachment is blocked. Please contact the IT department.",
+          "locked": true
+        }
+      }
+    }
+  }
+}
+```
+
+| Key                | Type    | Description                                             |
+|--------------------|---------|---------------------------------------------------------|
+| `blocked`          | string  | Comma separated list of blocked file extensions         |
+| `warn`             | string  | Comma separated list of file extensions with a warning  |
+| `user_warning_msg` | string  | Text of the warning dialog                              |
+| `user_blocked_msg` | string  | Text of the blocking dialog                             |
+| `locked`           | boolean | `true`: settings not given in the policy are locked to the default values, so the user can not change anything |
+
+All keys are optional. Without `locked`, settings not given in the policy can
+still be changed by the user.
+
 Development
 ===========
 
