@@ -6,11 +6,14 @@ docm and xlsm files. A set of highly risky attachments are blocked (cmd, exe
 etc.). See corresponding section in this document for an overview of file
 extensions.
 
+WarnAttachment only warns when opening attachments; saving is intentionally not
+blocked to reduce the workload for admins. Furthermore, the local
+countermeasures should catch threats in case of locally saved files.
+
 There is a lot of space for improvements. Feel free to contribute and send pull
 requests.
 
-Special thanks to Sarah (astriia) for
-creating the logo!
+Special thanks to Sarah (astriia) for creating the logo!
 
 This extension can be downloaded directly from the Thunderbird add-on repository: https://addons.thunderbird.net/de/thunderbird/addon/warnattachment/
 
