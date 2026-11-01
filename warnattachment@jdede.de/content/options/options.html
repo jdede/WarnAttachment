@@ -1,102 +1,72 @@
 <!DOCTYPE html>
-
 <html>
   <head>
     <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="options.css"/>
     <script src="options.js" defer></script>
   </head>
-<style>
-input[type=text], select {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-input[type=submit] {
-  width: 100%;
-  background-color: #4CAF50;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-input[type=submit]:hover {
-  background-color: #45a049;
-}
-
-div {
-  border-radius: 5px;
-  background-color: #f2f2f2;
-  padding: 5px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-
-label {
-  font-weight: bold;
-}
-
-.pref-desc {
-  color:grey;
-}
-
-#warnattachment-reset-button {
-  width: 100%;
-  background-color: #f44336;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-#warnattachment-reset-button:hover {
-  background-color: #d64336;
-}
-</style>
 
   <body class="option-page">
     <form>
-        <div>
-            <label i18n-text="options.warn.title" for="warnattachment-warning"></label>
-            <input type="text" id="warnattachment-warning">
-            <span class="pref-desc" i18n-text="options.warn.desc"></span>
-        </div>
-        <div>
-            <label i18n-text="options.blocked.title" for="warnattachment-blocking"></label>
-            <input type="text" id="warnattachment-blocking">
-            <span class="pref-desc" i18n-text="options.blocked.desc"></span>
-        </div>
-        <div>
-            <label i18n-text="options.warn.user.title" for="warnattachment-user-warn-message"></label>
-            <input type="text" id="warnattachment-user-warn-message">
-            <span class="pref-desc" i18n-text="options.warn.user.desc"></span>
-        </div>
-        <div>
-            <label i18n-text="options.blocked.user.title" for="warnattachment-user-blocked-message"></label>
-            <input type="text" id="warnattachment-user-blocked-message">
-            <span class="pref-desc" i18n-text="options.blocked.user.desc"></span>
-        </div>
+      <header class="page-head">
+        <img src="../../icons/icon64.png" alt="" width="40" height="40"/>
+        <h1 i18n-text="options.title"></h1>
+      </header>
 
-    <div id="infobox" style="display: none;"></div>
+      <!-- Warn -->
+      <section class="card card-warn">
+        <div class="card-head">
+          <span class="badge" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 3 2 21h20L12 3z"/><path d="M12 10v5M12 18h.01"/></svg>
+          </span>
+          <label for="warn-input" i18n-text="options.warn.title"></label>
+          <span class="count" id="warn-count"></span>
+        </div>
+        <textarea id="warnattachment-warning" hidden></textarea>
+        <div class="tags" id="warn-tags">
+          <input type="text" class="tag-input" id="warn-input" spellcheck="false" autocomplete="off" placeholder="+ EXT"/>
+        </div>
+        <p class="hint" i18n-text="options.warn.desc"></p>
 
-    <input type="submit" i18n-value="options.savesettings">
-    <input type="button" i18n-value="options.resetsettings" id="warnattachment-reset-button">
+        <div class="field">
+          <label for="warnattachment-user-warn-message" i18n-text="options.warn.user.title"></label>
+          <input type="text" id="warnattachment-user-warn-message" i18n-placeholder="options.warn.user.desc"/>
+        </div>
+      </section>
+
+      <!-- Block -->
+      <section class="card card-block">
+        <div class="card-head">
+          <span class="badge" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/></svg>
+          </span>
+          <label for="block-input" i18n-text="options.blocked.title"></label>
+          <span class="count" id="block-count"></span>
+        </div>
+        <textarea id="warnattachment-blocking" hidden></textarea>
+        <div class="tags" id="block-tags">
+          <input type="text" class="tag-input" id="block-input" spellcheck="false" autocomplete="off" placeholder="+ EXT"/>
+        </div>
+        <p class="hint" i18n-text="options.blocked.desc"></p>
+
+        <div class="field">
+          <label for="warnattachment-user-blocked-message" i18n-text="options.blocked.user.title"></label>
+          <input type="text" id="warnattachment-user-blocked-message" i18n-placeholder="options.blocked.user.desc"/>
+        </div>
+      </section>
+
+      <div class="actions">
+        <div id="infobox" role="status" aria-live="polite"></div>
+        <input type="button" class="btn btn-ghost" id="warnattachment-reset-button" i18n-value="options.resetsettings"/>
+        <input type="submit" class="btn btn-primary" i18n-value="options.savesettings"/>
+      </div>
     </form>
-    <hr width="100%" />
-    <p>
-    <a href="https://github.com/jdede/WarnAttachment" i18n-text="options.info.text.link.github"></a><br />
-    <a href="https://github.com/jdede/WarnAttachment/blob/master/LICENSE" i18n-text="options.info.text.link.license"></a>
-    </p>
 
-
+    <footer class="page-foot">
+      <a href="https://github.com/jdede/WarnAttachment" i18n-text="options.info.text.link.github"></a>
+      <span aria-hidden="true">·</span>
+      <a href="https://github.com/jdede/WarnAttachment/blob/master/LICENSE" i18n-text="options.info.text.link.license"></a>
+    </footer>
   </body>
 </html>
